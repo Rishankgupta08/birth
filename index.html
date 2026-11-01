@@ -4,55 +4,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#faf3ea">
-  <title>A Little World for You ♡</title>
+  <meta name="theme-color" content="#0D0D0D">
+  <title>ÉDITION — Disha Rathore · Birthday Special 2026</title>
+  <meta name="description" content="ÉDITION — Disha Rathore Birthday Special 2026. Made with all my love by Rishank.">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Parisienne&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap"
     rel="stylesheet">
+
   <style>
+    /* ==========================================================
+       1. DESIGN TOKENS
+       ========================================================== */
     :root {
-      --paper: #faf3ea;
-      --paper-deep: #f0e2d2;
-      --cream: #fffaf3;
-      --ink: #3a1a1f;
-      --wine: #7d2937;
-      --rose: #d99aa4;
-      --rose-pale: #f3dce0;
-      --gold: #b99454;
-      --sage: #879275;
-      --muted: #876d68;
-      --line: rgba(125, 41, 55, .16);
-      --shadow: 0 22px 60px rgba(84, 37, 43, .12);
-      --shadow-sm: 0 8px 24px rgba(84, 37, 43, .08);
+      --bg: #0D0D0D;
+      --surface: #141414;
+      --surface-raised: #1C1C1C;
+      --ink: #F9F8F6;
+      --ink-muted: rgba(249, 248, 246, 0.52);
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --gold-dim: rgba(201, 168, 76, 0.18);
+      --rose: #C27F8A;
+      --line: rgba(201, 168, 76, 0.22);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+      /* Typography */
+      --font-display: 'Playfair Display', 'Didot', 'Bodoni 72', Georgia, serif;
+      --font-body: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+      --font-accent: 'Cormorant Garamond', Georgia, serif;
+
+      /* Motion */
+      --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Layout */
+      --topbar-h: 64px;
     }
 
-    * {
+    /* ==========================================================
+       2. RESET — editorial: sharp edges only
+       ========================================================== */
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      border-radius: 0 !important;
     }
 
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
+      background: var(--bg);
       color: var(--ink);
-      background: var(--paper);
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      min-height: 100vh;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      opacity: 0;
+      transition: opacity 0.8s var(--ease-editorial);
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: .11;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    body.is-loading,
+    body.page-ready {
+      opacity: 1;
+    }
+
+    body.is-loading {
+      overflow: hidden;
+    }
+
+    body.is-loading main,
+    body.is-loading header,
+    body.is-loading footer,
+    body.is-loading #stars {
+      opacity: 0;
+    }
+
+    main,
+    header,
+    footer,
+    #stars {
+      transition: opacity 0.8s var(--ease-editorial);
+    }
+
+    img,
+    svg,
+    video,
+    canvas {
+      display: block;
+      max-width: 100%;
     }
 
     a {
@@ -62,1540 +115,3687 @@
 
     button {
       font: inherit;
-      cursor: pointer;
-      border: 0;
+      color: inherit;
       background: none;
+      border: 0;
+      cursor: pointer;
     }
 
-    /* LOADER */
+    ::selection {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* Base typographic roles */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    .accent {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .kicker {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .rule {
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: var(--line);
+      border: 0;
+    }
+
+    /* Thin custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-light);
+    }
+
+    /* ==========================================================
+       3. STARS CANVAS
+       ========================================================== */
+    #stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ==========================================================
+       4. LOADER — magazine cover
+       ========================================================== */
     #loader {
       position: fixed;
       inset: 0;
-      background: var(--paper);
-      z-index: 9999;
+      z-index: 1000;
+      background: var(--bg);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 18px;
-      transition: opacity .7s ease, visibility .7s;
+      transition: opacity 0.9s var(--ease-editorial), visibility 0.9s;
     }
 
-    #loader.gone {
+    #loader.hide {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
-    .loader-heart {
-      font-size: 3.2rem;
-      color: var(--wine);
-      animation: hb 1.1s ease-in-out infinite;
+    /* Cover frame — thin inset border like a printed cover */
+    #loader::before {
+      content: "";
+      position: absolute;
+      inset: clamp(14px, 3vw, 32px);
+      border: 1px solid var(--line);
+      opacity: 0;
+      animation: frameIn 1.2s var(--ease-editorial) 0.1s forwards;
     }
 
-    .loader-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      color: var(--muted);
-      letter-spacing: .08em;
+    .loader-cover {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
     }
 
-    @keyframes hb {
+    .loader-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 8vw, 6rem);
+      letter-spacing: 0.35em;
+      /* offset trailing letter-spacing so the word sits optically centred */
+      margin-right: -0.35em;
+      color: var(--gold);
+      line-height: 1;
+      display: flex;
+    }
 
-      0%,
-      100% {
+    .loader-title span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(0.4em);
+      filter: blur(6px);
+      animation: letterIn 0.9s var(--ease-editorial) forwards;
+      animation-delay: calc(var(--i) * 70ms + 150ms);
+    }
+
+    .loader-line {
+      height: 1px;
+      width: 0;
+      background: linear-gradient(90deg, transparent, var(--gold) 15%, var(--gold-light) 50%, var(--gold) 85%, transparent);
+      margin: clamp(1.1rem, 2.4vw, 1.8rem) 0;
+      animation: lineGrow 1.4s ease 0.35s forwards;
+    }
+
+    .loader-sub {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      margin-right: -0.3em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-editorial) 0.9s forwards;
+    }
+
+    @keyframes letterIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes lineGrow {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 200px;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes frameIn {
+      from {
+        opacity: 0;
+        transform: scale(1.02);
+      }
+
+      to {
+        opacity: 1;
         transform: scale(1);
       }
+    }
 
-      50% {
-        transform: scale(1.28);
+    /* ==========================================================
+       5. TOPBAR
+       ========================================================== */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--topbar-h);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+      background: rgba(13, 13, 13, 0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-brand {
+      justify-self: start;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      transition: color 0.4s ease;
+    }
+
+    .topbar-brand:hover {
+      color: var(--gold-light);
+    }
+
+    .topbar-issue {
+      justify-self: center;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .topbar-year {
+      justify-self: end;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 520px) {
+      .topbar-issue {
+        font-size: 0.5rem;
+        letter-spacing: 0.18em;
       }
     }
 
-    /* STARS */
-    #stars {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      opacity: .45;
-    }
-
-    /* FRAME */
-    .frame {
-      width: min(1100px, calc(100% - 40px));
-      margin: 0 auto;
+    /* ==========================================================
+       6. PAGE SHELL
+       ========================================================== */
+    main {
       position: relative;
-      z-index: 2;
+      z-index: 1;
+      padding-top: 0;
+      /* the cover runs full-bleed beneath the fixed topbar */
+      min-height: 100vh;
     }
 
-    /* TOPBAR */
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
-      position: relative;
-      z-index: 10;
-    }
-
-    .brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 500;
-      letter-spacing: .04em;
-    }
-
-    .brand em {
-      color: var(--wine);
-      font-style: italic;
-    }
-
-    .top-note {
-      font-size: .66rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* REVEAL */
+    /* ==========================================================
+       7. SCROLL REVEAL
+       ========================================================== */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .72s ease, transform .72s ease;
+      transform: translateY(40px);
+      transition:
+        opacity 0.8s var(--ease-editorial),
+        transform 0.8s var(--ease-editorial);
+      will-change: opacity, transform;
     }
 
     .reveal.vis {
       opacity: 1;
-      transform: none;
+      transform: translateY(0);
     }
 
     .d1 {
-      transition-delay: .1s;
+      transition-delay: 0.1s;
     }
 
     .d2 {
-      transition-delay: .2s;
+      transition-delay: 0.2s;
     }
 
     .d3 {
-      transition-delay: .3s;
+      transition-delay: 0.35s;
     }
 
     .d4 {
-      transition-delay: .4s;
+      transition-delay: 0.5s;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100svh;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 40px;
-      padding: 48px 0 84px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: .66rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--wine);
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before,
-    .eyebrow::after {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font: 300 clamp(3.8rem, 8vw, 7.8rem)/.88 'Cormorant Garamond', serif;
-      letter-spacing: -.04em;
-      max-width: 680px;
-      margin-bottom: 24px;
-    }
-
-    h1 em {
-      color: var(--wine);
-      font-style: italic;
-      font-weight: 400;
-    }
-
-    h2 {
-      font: 300 clamp(2.5rem, 5vw, 4.3rem)/.95 'Cormorant Garamond', serif;
-      letter-spacing: -.025em;
-      margin-bottom: 14px;
-    }
-
-    h3 {
-      font: 500 1.9rem 'Cormorant Garamond', serif;
-      margin-bottom: 10px;
-    }
-
-    .hero-copy {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.9;
-      max-width: 490px;
-      margin-bottom: 30px;
-    }
-
-    .hero-copy strong {
-      color: var(--wine);
-      font-weight: 500;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      padding: 14px 26px;
-      border-radius: 999px;
-      font-size: .88rem;
-      font-weight: 500;
-      letter-spacing: .02em;
-      transition: transform .22s, box-shadow .22s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-p {
-      background: var(--wine);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(125, 41, 55, .2);
-    }
-
-    .btn-p:hover {
-      box-shadow: 0 14px 30px rgba(125, 41, 55, .28);
-    }
-
-    .btn-g {
-      background: transparent;
-      color: var(--wine);
-      border: 1.5px solid var(--line);
-    }
-
-    .hero-tiny {
-      display: block;
-      margin-top: 14px;
-      font-size: .72rem;
-      color: var(--muted);
-    }
-
-    /* HERO ART */
-    .hero-art {
-      display: grid;
-      place-items: center;
-      min-height: 500px;
-      position: relative;
-    }
-
-    .orbit {
-      position: absolute;
-      border: 1px solid rgba(185, 148, 84, .32);
-      border-radius: 50%;
-    }
-
-    .o1 {
-      width: 390px;
-      height: 390px;
-      animation: spin 42s linear infinite;
-    }
-
-    .o2 {
-      width: 270px;
-      height: 270px;
-      animation: spin 28s linear infinite reverse;
-    }
-
-    .odot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .fheart {
-      position: absolute;
-      color: var(--rose);
+    /* ==========================================================
+       8. CONFETTI
+       ========================================================== */
+    .confetti {
+      position: fixed;
+      top: -40px;
+      z-index: 900;
       pointer-events: none;
-      animation: fh 5s ease-in-out infinite;
+      user-select: none;
+      line-height: 1;
+      will-change: transform, opacity;
+      animation: confettiFall var(--dur, 4s) cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s) forwards;
+      text-shadow: 0 0 8px rgba(201, 168, 76, 0.35);
     }
 
-    @keyframes fh {
+    @keyframes confettiFall {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 0;
+      }
 
-      0%,
+      8% {
+        opacity: 1;
+      }
+
+      85% {
+        opacity: 1;
+      }
+
       100% {
-        transform: translateY(0) rotate(-8deg);
-      }
-
-      50% {
-        transform: translateY(-18px) rotate(8deg);
+        transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(var(--spin, 360deg));
+        opacity: 0;
       }
     }
 
-    .hcard {
+    /* ==========================================================
+       10. COVER — the hero
+       ========================================================== */
+    main>section {
+      scroll-margin-top: var(--topbar-h);
+    }
+
+    .cover {
+      --photo-h: 65vh;
+      --photo-w: min(86vw, calc(var(--photo-h) * 0.78));
+      --edge: clamp(1rem, 4vw, 3rem);
+
       position: relative;
-      width: min(315px, 90%);
-      padding: 26px 24px 32px;
-      background: rgba(255, 250, 243, .93);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(125, 41, 55, .18);
-      box-shadow: var(--shadow);
-      transform: rotate(3deg);
-      z-index: 2;
+      height: 100vh;
+      height: 100svh;
+      min-height: 640px;
+      overflow: hidden;
+      isolation: isolate;
+      /* keeps the masthead's blend-mode inside the cover */
+      background-color: #0D0D0D;
+      background-image: repeating-linear-gradient(45deg,
+          rgba(201, 168, 76, 0.025) 0,
+          rgba(201, 168, 76, 0.025) 1px,
+          transparent 0,
+          transparent 50%);
+      background-size: 40px 40px;
     }
 
-    .hcard::before {
-      content: "";
+    /* Entrance choreography — plays once the loader lifts */
+    .ci {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 1.1s var(--ease-editorial) var(--d, 0s),
+        transform 1.1s var(--ease-editorial) var(--d, 0s);
+    }
+
+    body:not(.is-loading) .ci {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ---------- Photo slot ---------- */
+    .cover-input {
       position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(185, 148, 84, .38);
-      pointer-events: none;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
     }
 
-    .stamp-row {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 6px;
+    .cover-photo {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      top: calc(50% + 2vh);
+      width: var(--photo-w);
+      height: var(--photo-h);
+      transform: translate(-50%, -50%);
+      display: block;
+      overflow: hidden;
+      cursor: pointer;
+      background: linear-gradient(165deg, rgba(30, 25, 20, 1) 0%, rgba(22, 18, 14, 1) 55%, rgba(14, 12, 10, 1) 100%);
+      box-shadow: var(--shadow);
     }
 
-    .stamp {
-      width: 64px;
-      height: 74px;
+    .cover-photo.ci {
+      transform: translate(-50%, calc(-50% + 18px));
+    }
+
+    body:not(.is-loading) .cover-photo.ci {
+      transform: translate(-50%, -50%);
+    }
+
+    .cover-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 1.2s var(--ease-editorial), transform 2.4s var(--ease-editorial);
+    }
+
+    .cover-photo.has-photo .cover-img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .cover-placeholder {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 1.5px dashed var(--rose);
-      background: var(--rose-pale);
-      color: var(--wine);
-      font-size: 1.55rem;
-      transform: rotate(5deg);
+      gap: 1rem;
+      color: var(--gold);
+      transition: opacity 0.6s ease;
     }
 
-    .stamp small {
-      font: 700 7px 'DM Sans', sans-serif;
-      letter-spacing: .12em;
-      margin-top: 2px;
+    .cover-photo.has-photo .cover-placeholder {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .ck {
-      text-align: center;
-      font-size: .58rem;
-      letter-spacing: .22em;
-      color: var(--wine);
+    .cover-placeholder-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      transition: transform 0.8s var(--ease-editorial), color 0.4s ease;
+    }
+
+    .cover-photo:hover .cover-placeholder-icon {
+      transform: rotate(90deg) scale(1.15);
+      color: var(--gold-light);
+    }
+
+    .cover-placeholder-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      margin-right: -0.25em;
       text-transform: uppercase;
-      margin: 18px 0 12px;
+      color: var(--gold);
     }
 
-    .ct {
+    .cover-placeholder-hint {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    /* Vignette — always on top of the image */
+    .cover-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.7) 100%),
+        radial-gradient(ellipse at 50% 110%, rgba(201, 168, 76, 0.10) 0%, transparent 55%);
+    }
+
+    /* Gold hairline border — animates in on hover when empty */
+    .cover-photo::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid var(--gold);
+      opacity: 0;
+      pointer-events: none;
+      transition: inset 0.7s var(--ease-editorial), opacity 0.7s var(--ease-editorial);
+    }
+
+    .cover-photo:not(.has-photo):hover::after,
+    .cover-input:focus-visible+.cover-photo::after {
+      inset: 0;
+      opacity: 1;
+    }
+
+    /* Tiny "replace" tag once a photo is set */
+    .cover-replace {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%) translateX(8px);
+      font-family: var(--font-body);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(13, 13, 13, 0.7);
+      padding: 0.45rem 0.7rem;
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s var(--ease-editorial);
+      pointer-events: none;
+    }
+
+    .cover-photo.has-photo:hover .cover-replace {
+      opacity: 1;
+      transform: translateY(-50%);
+    }
+
+    /* ---------- Overlays (never block the photo click) ---------- */
+    .cover-masthead,
+    .cover-lines,
+    .cover-credit,
+    .cover-bottom,
+    .cover-barcode {
+      pointer-events: none;
+    }
+
+    .cover-masthead {
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding-top: 120px;
       text-align: center;
-      font: 500 3.4rem/.88 'Cormorant Garamond', serif;
+      mix-blend-mode: difference;
     }
 
-    .ct em {
-      color: var(--wine);
+    .cover-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(4rem, 15vw, 13rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: rgba(249, 248, 246, 0.92);
+    }
+
+    /* Left cover lines */
+    .cover-lines {
+      position: absolute;
+      z-index: 4;
+      left: var(--edge);
+      top: 50%;
+      transform: translateY(-30%);
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      max-width: 170px;
+    }
+
+    .cover-lines li {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.62rem;
+      line-height: 1.6;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    .cover-lines li::before {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 0.55rem;
+      opacity: 0.8;
+    }
+
+    /* Right vertical credit */
+    .cover-credit {
+      position: absolute;
+      z-index: 4;
+      right: var(--edge);
+      top: 50%;
+      writing-mode: vertical-rl;
+      transform: translateY(-50%) rotate(180deg);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .cover-credit.ci {
+      transform: translateY(calc(-50% + 18px)) rotate(180deg);
+    }
+
+    body:not(.is-loading) .cover-credit.ci {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Bottom cover footer */
+    .cover-bottom {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      bottom: 84px;
+      width: var(--photo-w);
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .cover-bottom.ci {
+      transform: translate(-50%, 18px);
+    }
+
+    body:not(.is-loading) .cover-bottom.ci {
+      transform: translateX(-50%);
+    }
+
+    .cover-issue {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(0.9rem, 2vw, 1.4rem);
+      letter-spacing: 0.18em;
+      margin-right: -0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.2;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
+    }
+
+    .cover-bottom-line {
+      height: 1px;
+      width: 100%;
+      background: var(--gold);
+      opacity: 0.4;
+      margin: 0.85rem 0 0.75rem;
+    }
+
+    .cover-dateline {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      margin-right: -0.3em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    /* Barcode */
+    .cover-barcode {
+      position: absolute;
+      z-index: 4;
+      right: var(--edge);
+      bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+
+    .cover-barcode svg {
+      width: 51px;
+      height: 28px;
+      fill: rgba(249, 248, 246, 0.78);
+    }
+
+    .cover-barcode span {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+    }
+
+    /* Scroll CTA */
+    .cover-cta-wrap {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+    }
+
+    .cover-cta-wrap.ci {
+      transform: translate(-50%, 18px);
+    }
+
+    body:not(.is-loading) .cover-cta-wrap.ci {
+      transform: translateX(-50%);
+    }
+
+    .cover-cta {
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--gold);
+      padding: 0.4rem 0.1rem 0.45rem;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+      animation: ctaPulse 2s ease-in-out infinite;
+      transition: color 0.3s ease, border-color 0.3s ease, letter-spacing 0.5s var(--ease-editorial);
+    }
+
+    .cover-cta:hover,
+    .cover-cta:focus-visible {
+      animation-play-state: paused;
+      opacity: 1;
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+      letter-spacing: 0.26em;
+      outline: none;
+    }
+
+    @keyframes ctaPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cover {
+        --photo-h: 60vh;
+      }
+
+      .cover-masthead {
+        padding-top: 104px;
+      }
+
+      .cover-lines {
+        max-width: 112px;
+        gap: 1rem;
+      }
+
+      .cover-lines li {
+        font-size: 0.54rem;
+        letter-spacing: 0.12em;
+      }
+
+      .cover-dateline {
+        font-size: 0.5rem;
+        letter-spacing: 0.2em;
+        margin-right: -0.2em;
+      }
+
+      .cover-barcode svg {
+        width: 38px;
+        height: 22px;
+      }
+    }
+
+    /* ==========================================================
+       11. SHARED SECTION UTILITIES
+       ========================================================== */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-left: clamp(1.25rem, 5vw, 4rem);
+      padding-right: clamp(1.25rem, 5vw, 4rem);
+    }
+
+    .section-kicker {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* ==========================================================
+       12. EDITOR'S NOTE
+       ========================================================== */
+    .editor {
+      position: relative;
+      background: var(--surface);
+      border-top: 4px solid var(--gold);
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 80px;
+      padding-top: 100px;
+      padding-bottom: 100px;
+      align-items: start;
+    }
+
+    .editor-letter {
+      display: flow-root;
+      /* contains the floated drop cap */
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.15rem;
+      line-height: 2;
+      color: var(--ink);
+    }
+
+    .dropcap {
+      float: left;
+      font-family: var(--font-display);
+      font-style: normal;
+      font-weight: 900;
+      font-size: 8rem;
+      line-height: 0.75;
+      margin-right: 16px;
+      margin-top: 10px;
+      color: var(--gold);
+    }
+
+    .editor-rule {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2.25rem 0 1.1rem;
+    }
+
+    .editor-sign {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .editor-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+    }
+
+    .editor-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .editor-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.95;
+      color: var(--ink-muted);
+      max-width: 52ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .editor-turn {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .editor-turn::after {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+      transition: width 0.6s var(--ease-editorial);
+    }
+
+    .editor-right:hover .editor-turn::after {
+      width: 72px;
+    }
+
+    @media (max-width: 900px) {
+      .editor-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
+      /* Lead with the heading on small screens */
+      .editor-right {
+        order: -1;
+      }
+
+      .dropcap {
+        font-size: 6rem;
+      }
+    }
+
+    /* ==========================================================
+       13. CELEBRITY BIO — the stats spread
+       ========================================================== */
+    .bio {
+      position: relative;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .bio-header {
+      text-align: center;
+      padding: 70px 0 50px;
+    }
+
+    .bio-overline {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      margin-right: -0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .bio-title-line {
+      display: block;
+    }
+
+    .bio-title-legend {
+      display: block;
       font-style: italic;
       font-weight: 300;
     }
 
-    .cdiv {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
-      color: var(--gold);
-      margin: 12px 0;
-      font-size: .75rem;
-    }
-
-    .cdiv::before,
-    .cdiv::after {
-      content: "";
-      flex: 1;
+    .bio-header-rule {
       height: 1px;
+      width: 100%;
       background: var(--gold);
-      opacity: .55;
+      opacity: 0.55;
+      margin-top: 50px;
+      transform-origin: center;
     }
 
-    .cc {
-      text-align: center;
-      color: var(--muted);
-      font-size: .8rem;
-      line-height: 1.7;
+    .bio-header-rule.reveal {
+      transform: scaleX(0);
+      opacity: 0;
     }
 
-    .csig {
-      text-align: center;
-      font: 2rem 'Parisienne', cursive;
-      color: var(--wine);
-      margin-top: 20px;
+    .bio-header-rule.reveal.vis {
+      transform: scaleX(1);
+      opacity: 0.55;
+      transition-duration: 1.4s;
     }
 
-    /* STATS */
     .stats {
-      padding: 52px 0;
-      border-top: 1px solid rgba(125, 41, 55, .07);
-      border-bottom: 1px solid rgba(125, 41, 55, .07);
-    }
-
-    .sgrid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      text-align: center;
+      gap: 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .snum {
+    .stat {
+      position: relative;
+      padding: 50px 40px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      transition: background-color 0.6s var(--ease-editorial);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: translateX(-50%);
+      transition: width 0.7s var(--ease-editorial);
+    }
+
+    .stat:hover {
+      background-color: var(--gold-dim);
+    }
+
+    .stat:hover::before {
+      width: 60%;
+    }
+
+    .stat-num {
       display: block;
-      font: 300 3.5rem 'Cormorant Garamond', serif;
-      color: var(--wine);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3rem, 6vw, 5.5rem);
       line-height: 1;
+      color: var(--gold);
+      margin-bottom: 1.1rem;
+      transition: color 0.4s ease, transform 0.7s var(--ease-editorial);
     }
 
-    .slbl {
+    .stat:hover .stat-num {
+      color: var(--gold-light);
+      transform: translateY(-4px);
+    }
+
+    .stat-label {
       display: block;
-      font-size: .68rem;
-      letter-spacing: .15em;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.65rem;
+      line-height: 1.7;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 8px;
+      color: var(--ink-muted);
     }
 
-    /* SECTION HEAD */
-    .sec-head {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 50px;
+    .bio-quote {
+      background: var(--surface);
+      border-left: 5px solid var(--gold);
+      padding: 40px 50px;
+      margin: 60px 0 100px;
     }
 
-    .kicker {
-      display: inline-block;
-      font-size: .64rem;
-      letter-spacing: .22em;
+    .bio-quote p {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      line-height: 1.45;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .bio-quote cite {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-weight: 600;
-      color: var(--wine);
-      margin-bottom: 13px;
+      color: var(--gold);
     }
 
-    .sec-head p {
-      color: var(--muted);
-      line-height: 1.85;
-      margin-top: 10px;
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .stat {
+        padding: 40px 24px;
+      }
+
+      .bio-quote {
+        padding: 32px 28px;
+        margin: 48px 0 72px;
+      }
     }
 
-    section {
-      padding: 90px 0;
+    @media (max-width: 520px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .stat:last-child {
+        border-bottom: 0;
+      }
     }
 
-    /* MEMORIES */
-    .memories {
-      background: rgba(255, 250, 243, .38);
+    /* ==========================================================
+       14. PHOTO EDITORIAL
+       ========================================================== */
+    .editorial {
+      position: relative;
+      background: var(--surface);
+      padding: 100px 0 110px;
     }
 
-    .mgrid {
+    .ed-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .ed-overline {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .ed-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .ed-subline {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      padding-bottom: 0.4rem;
+    }
+
+    .ed-rule {
+      height: 1px;
+      width: 100%;
+      background: var(--gold);
+      opacity: 0.55;
+      margin: 36px 0 56px;
+      transform-origin: left center;
+    }
+
+    .ed-rule.reveal {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+
+    .ed-rule.reveal.vis {
+      transform: scaleX(1);
+      opacity: 0.55;
+      transition-duration: 1.4s;
+    }
+
+    /* ---------- Grid ---------- */
+    .ed-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      column-gap: 24px;
+      row-gap: 40px;
     }
 
-    .mcard {
-      background: var(--cream);
-      padding: 11px 11px 20px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(125, 41, 55, .07);
-      transform: rotate(var(--tilt, 0deg));
-      transition: transform .3s, box-shadow .3s;
-      cursor: pointer;
+    .ed-card {
+      --slot-h: 340px;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
     }
 
-    .mcard:hover {
-      transform: translateY(-6px) rotate(0) scale(1.01);
-      box-shadow: var(--shadow);
+    .ed-card--1 {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      --slot-h: 480px;
     }
 
-    .pslot {
-      min-height: 255px;
+    .ed-card--2 {
+      grid-column: 3;
+      grid-row: 1;
+      --slot-h: 380px;
+    }
+
+    /* Tall portrait fills column 1 beside cards 4, 6 and 5, so the grid has no empty cell */
+    .ed-card--3 {
+      grid-column: 1;
+      grid-row: 2 / 4;
+      --slot-h: 380px;
+    }
+
+    .ed-card--4 {
+      grid-column: 2;
+      grid-row: 2;
+      --slot-h: 380px;
+    }
+
+    .ed-card--6 {
+      grid-column: 3;
+      grid-row: 2;
+      --slot-h: 380px;
+    }
+
+    .ed-card--5 {
+      grid-column: 2 / 4;
+      grid-row: 3;
+      --slot-h: 480px;
+    }
+
+    /* ---------- Slot ---------- */
+    .ed-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+
+    .ed-slot {
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(145deg, #f1d9d9, #f6ead9 55%, #dce1d2);
+      flex: 0 0 var(--slot-h);
+      height: var(--slot-h);
+      background: #1A1A1A;
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      cursor: pointer;
     }
 
-    .pslot img.upl {
+    .ed-card--3 .ed-slot {
+      flex: 0 0 var(--slot-h);
+      height: var(--slot-h);
+      min-height: 0;
+    }
+
+    .ed-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1s var(--ease-editorial), transform 1.6s var(--ease-editorial);
+    }
+
+    .ed-slot.has-photo .ed-img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .ed-slot.has-photo:hover .ed-img {
+      transform: scale(1.03);
+    }
+
+    .ed-placeholder {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      transition: opacity 0.5s ease;
+    }
+
+    .ed-slot.has-photo .ed-placeholder {
+      opacity: 0;
+    }
+
+    .ed-num {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(201, 168, 76, 0.08);
+      pointer-events: none;
+      transition: color 0.6s ease;
+    }
+
+    .ed-plus {
+      position: relative;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .ed-add {
+      position: relative;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      margin-right: -0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .ed-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background:
+        radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.55) 100%),
+        radial-gradient(ellipse at 50% 120%, rgba(201, 168, 76, 0.14) 0%, transparent 60%);
+      transition: opacity 1s ease;
+    }
+
+    .ed-slot.has-photo .ed-vignette {
+      opacity: 1;
+    }
+
+    .ed-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      opacity: 0;
+      transition: opacity 0.45s var(--ease-editorial);
+      pointer-events: none;
+    }
+
+    .ed-overlay-change {
+      display: none;
+    }
+
+    .ed-slot.has-photo .ed-overlay-add {
+      display: none;
+    }
+
+    .ed-slot.has-photo .ed-overlay-change {
+      display: inline;
+    }
+
+    /* Gold inset hairline — on a pseudo-element so it paints above the photo */
+    .ed-slot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 0 var(--gold);
+      transition: box-shadow 0.5s var(--ease-editorial);
+    }
+
+    .ed-slot:hover::after,
+    .ed-input:focus-visible+.ed-slot::after {
+      box-shadow: inset 0 0 0 1px var(--gold);
+    }
+
+    .ed-slot:hover .ed-overlay,
+    .ed-input:focus-visible+.ed-slot .ed-overlay {
+      opacity: 1;
+    }
+
+    .ed-slot:hover .ed-num {
+      color: rgba(201, 168, 76, 0.16);
+    }
+
+    /* ---------- Caption ---------- */
+    .ed-caption {
+      padding: 14px 0 0;
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .ed-cap {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .ed-quote {
+      display: block;
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .ed-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: dense;
+      }
+
+      .ed-card--1,
+      .ed-card--5 {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+
+      .ed-card--2,
+      .ed-card--3,
+      .ed-card--4,
+      .ed-card--6 {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .ed-card--1 {
+        --slot-h: 440px;
+      }
+
+      .ed-card--2 {
+        --slot-h: 360px;
+      }
+
+      .ed-card--5 {
+        --slot-h: 340px;
+      }
+
+      .ed-card--3 .ed-slot {
+        flex: 0 0 var(--slot-h);
+        height: var(--slot-h);
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .editorial {
+        padding: 72px 0 80px;
+      }
+
+      .ed-grid {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+
+      .ed-card,
+      .ed-card--1,
+      .ed-card--2,
+      .ed-card--5 {
+        grid-column: 1;
+        --slot-h: 280px;
+      }
+
+      .ed-rule {
+        margin: 28px 0 40px;
+      }
+    }
+
+    /* ==========================================================
+       15. 8 THINGS — flip-card list feature
+       ========================================================== */
+    .things {
+      position: relative;
+      background: var(--bg);
+      border-top: 4px solid var(--gold);
+      padding: 100px 0 110px;
+    }
+
+    .things-tag {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.58rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .things-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .things-title span {
+      display: block;
+    }
+
+    .things-title .things-title-2 {
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .things-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      margin-top: 1.25rem;
+    }
+
+    .things-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 50px;
+    }
+
+    .rcard {
+      display: block;
+      width: 100%;
+      padding: 0;
+      text-align: left;
+      perspective: 1200px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .rcard:focus-visible {
+      outline: 1px solid var(--gold-light);
+      outline-offset: 3px;
+    }
+
+    .rcard-inner {
+      position: relative;
+      display: grid;
+      /* faces stack in one cell — card grows to fit the longer face */
+      min-height: 240px;
+      transform-style: preserve-3d;
+      transition: transform 0.9s var(--ease-editorial);
+    }
+
+    .rcard.flip .rcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .rcard-face {
+      grid-area: 1 / 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 22px 24px 24px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .rcard-front {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Gold left rule on hover */
+    .rcard-front::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      bottom: -1px;
+      width: 2px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.55s var(--ease-editorial);
+    }
+
+    .rcard:hover .rcard-front::before,
+    .rcard:focus-visible .rcard-front::before {
+      transform: scaleY(1);
+    }
+
+    .rcard-no {
+      align-self: flex-end;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.4);
+    }
+
+    .rcard-icon {
+      margin: auto 0;
+      padding: 1.5rem 0 1rem;
+      font-size: 1.8rem;
+      line-height: 1;
+      color: var(--gold-dim);
+      transition: color 0.5s ease, transform 0.8s var(--ease-editorial);
+    }
+
+    .rcard:hover .rcard-icon {
+      color: rgba(201, 168, 76, 0.45);
+      transform: scale(1.12);
+    }
+
+    .rcard-tap {
+      margin-top: auto;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      margin-right: -0.18em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, 0.35);
+    }
+
+    .rcard-back {
+      background: var(--gold);
+      color: #0D0D0D;
+      transform: rotateY(180deg);
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .rcard-back-no {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(13, 13, 13, 0.55);
+    }
+
+    .rcard-text {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #0D0D0D;
+    }
+
+    .rcard-back-mark {
+      align-self: flex-end;
+      font-size: 0.9rem;
+      line-height: 1;
+      color: rgba(13, 13, 13, 0.45);
+    }
+
+    @media (max-width: 1024px) {
+      .things-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .things {
+        padding: 72px 0 80px;
+      }
+
+      .things-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rcard-inner {
+        min-height: 200px;
+      }
+    }
+
+    /* ==========================================================
+       16. LOVE STORY TIMELINE
+       ========================================================== */
+    .story {
+      position: relative;
+      background: var(--surface);
+      padding: 100px 0 120px;
+    }
+
+    .story-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .story-overline {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      margin-right: -0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .story-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tl-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 0.5px);
+      width: 1px;
+      background: var(--gold);
+      transform-origin: top;
+    }
+
+    .tl-line.reveal {
+      opacity: 1;
+      transform: scaleY(0);
+    }
+
+    .tl-line.reveal.vis {
+      transform: scaleY(1);
+      transition: transform 2.4s var(--ease-editorial);
+    }
+
+    .tl-list {
+      list-style: none;
+      position: relative;
+    }
+
+    .tl-item {
+      position: relative;
+      width: 50%;
+    }
+
+    .tl-item+.tl-item {
+      margin-top: -32px;
+      /* gentle editorial stagger between sides */
+    }
+
+    .tl-left {
+      padding-right: 56px;
+    }
+
+    .tl-right {
+      margin-left: 50%;
+      padding-left: 56px;
+    }
+
+    /* Dot — an 8px gold diamond (no rounded corners in this design system) */
+    .tl-dot {
+      position: absolute;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 4px var(--surface), 0 0 14px rgba(201, 168, 76, 0.55);
+    }
+
+    .tl-left .tl-dot {
+      right: -4px;
+    }
+
+    .tl-right .tl-dot {
+      left: -4px;
+    }
+
+    .tl-label {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.68rem;
+      line-height: 18px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .tl-left .tl-label {
+      text-align: right;
+    }
+
+    .tl-card {
+      background: var(--surface-raised);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      transition: transform 0.6s var(--ease-editorial), background-color 0.6s ease;
+    }
+
+    .tl-left .tl-card {
+      border-left: 2px solid var(--gold);
+    }
+
+    .tl-right .tl-card {
+      border-right: 2px solid var(--gold);
+    }
+
+    .tl-item:hover .tl-card {
+      transform: translateY(-4px);
+      background-color: #202020;
+    }
+
+    .tl-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 0.65rem;
+    }
+
+    .tl-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 760px) {
+      .story {
+        padding: 72px 0 88px;
+      }
+
+      .story-header {
+        margin-bottom: 52px;
+      }
+
+      .tl-line {
+        left: 4px;
+      }
+
+      .tl-item,
+      .tl-left,
+      .tl-right {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 36px;
+        padding-right: 0;
+      }
+
+      .tl-item+.tl-item {
+        margin-top: 44px;
+      }
+
+      .tl-left .tl-dot,
+      .tl-right .tl-dot {
+        left: 0.5px;
+        right: auto;
+      }
+
+      .tl-left .tl-label {
+        text-align: left;
+      }
+
+      .tl-left .tl-card,
+      .tl-right .tl-card {
+        border-left: 2px solid var(--gold);
+        border-right: 0;
+        padding: 24px 24px;
+      }
+    }
+
+    /* ==========================================================
+       17. THE LETTER
+       ========================================================== */
+    .letter-section {
+      position: relative;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      padding: 100px 0 120px;
+    }
+
+    .letter-header {
+      text-align: center;
+      margin-bottom: 54px;
+    }
+
+    .letter-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .letter-subline {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--ink-muted);
+      margin-top: 1.25rem;
+    }
+
+    .letter-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .letter-btn {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .letter-btn:hover,
+    .letter-btn:focus-visible {
+      background: var(--gold);
+      color: var(--bg);
+      outline: none;
+    }
+
+    .letter-box {
+      display: none;
+      background: #111008;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-left: 4px solid var(--gold);
+      padding: 50px 50px 40px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+      margin-top: 42px;
+      text-align: left;
+    }
+
+    .letter-text {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 2.2;
+      color: var(--ink);
+      white-space: pre-line;
+      min-height: 140px;
+    }
+
+    .letter-signature {
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 1.2s var(--ease-editorial), transform 1.2s var(--ease-editorial);
+    }
+
+    .letter-signature.vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================
+       18. BACK COVER
+       ========================================================== */
+    .back-cover {
+      position: relative;
+      background: var(--surface);
+      min-height: 320px;
+      border-top: 1px solid var(--line);
+      padding: 80px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .back-cover-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .back-cover-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(4rem, 14vw, 12rem);
+      line-height: 0.9;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201, 168, 76, 0.35);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .back-cover-line {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.45;
+      margin: 28px 0 22px;
+    }
+
+    .back-cover-issue {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      margin-right: -0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .back-cover-credit {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      margin-right: -0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 10px;
+    }
+
+    .back-cover-barcode {
+      position: absolute;
+      right: 0;
+      bottom: -40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+
+    .back-cover-barcode svg {
+      width: 51px;
+      height: 28px;
+      fill: rgba(249, 248, 246, 0.78);
+    }
+
+    .back-cover-barcode span {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+    }
+
+    /* ==========================================================
+       19. FOOTER
+       ========================================================== */
+    .site-footer {
+      padding: 20px 0;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      text-transform: lowercase;
+    }
+
+    /* ==========================================================
+       21. FAST FACTS, CHILDHOOD & WISHES STYLES
+       ========================================================== */
+    /* Fast Facts in Celebrity Bio */
+    .bio-facts {
+      margin: 64px 0 30px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 32px;
+    }
+
+    .bio-fact-card {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-left: 2px solid var(--gold);
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .bio-fact-card:hover {
+      background: #1c1c1c;
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    .bio-fact-bullet {
+      color: var(--gold);
+      font-size: 1.15rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .bio-fact-head {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .bio-fact-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+    }
+
+    /* Childhood Edition in Photo Editorial */
+    .childhood-wrap {
+      margin-top: 90px;
+      padding-top: 64px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .childhood-header {
+      margin-bottom: 40px;
+    }
+
+    .childhood-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    .childhood-subline {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      margin-top: 8px;
+    }
+
+    .childhood-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .childhood-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .childhood-slot {
+      height: 320px;
+      flex: 0 0 320px;
+    }
+
+    /* Wishes Section */
+    .wishes-section {
+      position: relative;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      padding: 100px 0 110px;
+    }
+
+    .wishes-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .wishes-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .wishes-subline {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+      margin-top: 1.25rem;
+    }
+
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .wish-card {
+      position: relative;
+      background: var(--surface-raised);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--gold);
+      padding: 44px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+    }
+
+    .wish-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      background: #202020;
+    }
+
+    .wish-num {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-dim);
+    }
+
+    .wish-icon {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .wish-head {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .wish-body {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--ink-muted);
+    }
+
+    /* Embedded Photo Slots & Heart Accents */
+    .pslot {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1A1A1A;
+    }
+
+    .pslot img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+      opacity: 1 !important;
+      transform: scale(1) !important;
     }
 
-    .povr {
+    .ed-slot img,
+    .cover-photo img {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+
+    .pslot .phrt {
       position: absolute;
-      inset: 0;
-      background: rgba(125, 41, 55, .48);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 6px;
-      opacity: 0;
-      transition: opacity .25s;
-      color: #fff;
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .povr span {
-      font-size: 1.5rem;
-    }
-
-    .pslot:hover .povr {
-      opacity: 1;
-    }
-
-    .pph {
-      text-align: center;
-      color: var(--wine);
-      opacity: .5;
+      bottom: 12px;
+      right: 14px;
+      color: rgba(201, 168, 76, 0.5);
+      font-size: 1.1rem;
+      z-index: 2;
       pointer-events: none;
-    }
-
-    .pnum {
-      display: block;
-      font: 300 3rem 'Cormorant Garamond', serif;
-    }
-
-    .pph small {
-      display: block;
-      font-size: .58rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-top: 5px;
-    }
-
-    .phrt {
-      position: absolute;
-      bottom: 11px;
-      right: 13px;
-      color: rgba(125, 41, 55, .45);
-      font-size: 1.05rem;
-    }
-
-    input[type=file] {
-      display: none;
-    }
-
-    .mcap {
-      padding: 13px 4px 2px;
-      font: italic 1.28rem 'Cormorant Garamond', serif;
-      color: var(--wine);
-      text-align: center;
-    }
-
-    .msub {
-      text-align: center;
-      font-size: .64rem;
-      color: var(--muted);
-      letter-spacing: .07em;
-      margin-top: 4px;
-    }
-
-    /* REASONS */
-    .rgrid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 44px;
-    }
-
-    .rcard {
-      min-height: 200px;
-      perspective: 800px;
-      cursor: pointer;
-    }
-
-    .rinner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 200px;
-      transform-style: preserve-3d;
-      transition: transform .55s ease;
-    }
-
-    .rcard.flip .rinner {
-      transform: rotateY(180deg);
-    }
-
-    .rfront,
-    .rback {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 22px 16px;
-      border: 1px solid rgba(125, 41, 55, .11);
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .rback {
-      background: var(--wine);
-      color: #fff;
-      transform: rotateY(180deg);
-      border-color: transparent;
-    }
-
-    .rnum {
-      font: 300 3rem 'Cormorant Garamond', serif;
-      color: rgba(125, 41, 55, .18);
       line-height: 1;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     }
 
-    .ricon {
-      font-size: 1.5rem;
-      margin-bottom: 7px;
+    /* Horizontal photo strip: More of Us */
+    .frame {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-left: clamp(1.25rem, 5vw, 4rem);
+      padding-right: clamp(1.25rem, 5vw, 4rem);
     }
 
-    .rhint {
-      font-size: .64rem;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 9px;
-    }
-
-    .rback .rhint {
-      color: rgba(255, 255, 255, .6);
-    }
-
-    .rtext {
-      font: italic 1.1rem/1.65 'Cormorant Garamond', serif;
-    }
-
-    /* NOTE */
-    .note {
-      background: linear-gradient(160deg, var(--paper-deep), var(--paper));
-    }
-
-    .note-inner {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .lwrap {
-      display: grid;
-      place-items: center;
-      min-height: 380px;
-      position: relative;
-    }
-
-    .lcard {
-      width: min(330px, 92%);
-      min-height: 315px;
-      padding: 35px 28px 38px;
-      background: #fffaf3;
-      border: 1px solid rgba(125, 41, 55, .18);
-      box-shadow: var(--shadow);
-      transform: rotate(-4deg);
-      position: relative;
-      transition: transform .3s;
-    }
-
-    .lcard:hover {
-      transform: rotate(-1deg) scale(1.01);
-    }
-
-    .lcard::after {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(185, 148, 84, .38);
-      pointer-events: none;
-    }
-
-    .lcard h3 {
-      color: var(--wine);
-      margin-top: 8px;
-    }
-
-    .lcard p {
-      font-size: .8rem;
-      line-height: 1.95;
-      color: var(--muted);
-      margin-top: 11px;
-    }
-
-    .lsig {
-      font: 1.38rem 'Parisienne', cursive;
-      color: var(--wine);
-      margin-top: 15px;
-    }
-
-    .lhrt {
-      position: absolute;
-      bottom: 19px;
-      right: 22px;
-      color: var(--rose);
-      font-size: 1.8rem;
-    }
-
-    .promises {
-      display: grid;
-      gap: 11px;
-      margin-top: 22px;
-    }
-
-    .promise {
-      display: flex;
-      gap: 13px;
-      align-items: flex-start;
-      padding: 14px 17px;
-      background: rgba(255, 250, 243, .65);
-      border: 1px solid rgba(125, 41, 55, .08);
-      border-radius: 13px;
-      transition: border-color .2s, box-shadow .2s;
-    }
-
-    .promise:hover {
-      border-color: rgba(125, 41, 55, .16);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .pico {
-      color: var(--gold);
-      font-size: .95rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .promise p {
-      font-size: .88rem;
-      color: var(--ink);
-      line-height: 1.6;
-    }
-
-    .note-copy>p {
-      color: var(--muted);
-      line-height: 1.95;
-      margin-bottom: 18px;
-    }
-
-    /* WISHES */
-    .wishes {
-      background: #efe0d3;
-    }
-
-    .wgrid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 44px;
-    }
-
-    .wcard {
-      min-height: 188px;
-      border: 1.5px solid rgba(125, 41, 55, .13);
-      background: rgba(255, 250, 243, .8);
-      border-radius: 20px;
-      padding: 26px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--wine);
-      cursor: pointer;
-      transition: transform .25s, box-shadow .25s, background .25s;
-    }
-
-    .wcard:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .wcard.open {
-      background: #fffaf3;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .wico {
-      font-size: 1.8rem;
-      margin-bottom: 13px;
-      transition: transform .25s;
-    }
-
-    .wcard:hover .wico {
-      transform: scale(1.15);
-    }
-
-    .wtit {
-      font: 500 1.5rem 'Cormorant Garamond', serif;
-    }
-
-    .wtxt {
-      display: none;
-      color: var(--muted);
-      font-size: .82rem;
-      line-height: 1.7;
-      margin-top: 11px;
-      animation: fIn .3s ease;
-    }
-
-    .wcard.open .wtxt {
-      display: block;
-    }
-
-    .wcard.open .wtit {
-      font-size: 1.25rem;
-    }
-
-    @keyframes fIn {
-      from {
-        opacity: 0;
-        transform: translateY(5px);
-      }
-
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* LETTER */
-    .lsec {
-      text-align: center;
-    }
-
-    .fheart {
-      font-size: 2.2rem;
-      color: var(--rose);
-      display: block;
-      margin: 14px 0;
-      animation: hb 2.2s ease-in-out infinite;
-    }
-
-    #twbox {
-      display: none;
-      text-align: left;
-      padding: 38px;
-      background: var(--cream);
-      border: 1px solid rgba(125, 41, 55, .15);
-      box-shadow: var(--shadow);
-      margin-top: 26px;
-      position: relative;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fIn .4s ease;
-    }
-
-    #twbox::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(185, 148, 84, .32);
-      pointer-events: none;
-    }
-
-    #twtext {
-      font: 300 1.05rem/2.05 'Cormorant Garamond', serif;
-      color: #5a3a3f;
-      white-space: pre-line;
-      letter-spacing: .01em;
-    }
-
-    .curs {
+    .strip-overline {
       display: inline-block;
-      width: 2px;
-      height: 1.1em;
-      background: var(--wine);
-      vertical-align: middle;
-      animation: blink .7s step-end infinite;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
     }
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
+    .strip-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--ink);
+      margin-top: 0.5rem;
+      letter-spacing: -0.01em;
     }
 
-    .twsig {
-      font: 2.3rem 'Parisienne', cursive;
-      color: var(--wine);
+    .more-strip {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      gap: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: #C9A84C #0D0D0D;
+      padding: 0;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .more-strip:active {
+      cursor: grabbing;
+    }
+
+    .more-strip::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .more-strip::-webkit-scrollbar-thumb {
+      background: #C9A84C;
+    }
+
+    .more-strip::-webkit-scrollbar-track {
+      background: #0D0D0D;
+    }
+
+    .more-strip img {
+      width: 300px;
+      height: 420px;
+      flex-shrink: 0;
+      object-fit: cover;
+      object-position: center top;
       display: block;
-      margin-top: 22px;
-      text-align: right;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: brightness(0.92);
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
-    .fsig {
-      font: 1.9rem 'Parisienne', cursive;
-      color: var(--wine);
+    .more-strip img:hover {
+      transform: scale(1.02);
+      filter: brightness(1.05);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* ==========================================================
+       20. GLOBAL POLISH & REFINED BREAKPOINTS
+       ========================================================== */
+    /* Horizontal section dividers */
+    main>section {
+      border-top: 1px solid var(--line);
+    }
+
+    main>section.cover {
+      border-top: none;
+    }
+
+    main>section.editor,
+    main>section.things {
+      border-top: 4px solid var(--gold);
+    }
+
+    /* Smooth hover on all interactive cards */
+    .cover-photo,
+    .stat,
+    .ed-slot,
+    .rcard,
+    .rcard-face,
+    .tl-card,
+    .letter-btn,
+    .cover-cta,
+    .wish-card,
+    .bio-fact-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* All <h2> tags: gold underline pseudo-element appears below on .vis */
+    h2 {
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
       display: block;
-      margin-top: 36px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      margin: 18px auto 0;
+      transition: width 0.8s var(--ease-editorial) 0.3s;
     }
 
-    /* CONFETTI */
-    .cp {
-      position: fixed;
-      z-index: 9990;
-      top: -20px;
-      pointer-events: none;
-      animation: fall var(--d, 3s) linear forwards;
+    h2.vis::after,
+    .vis h2::after,
+    .reveal.vis h2::after,
+    .vis>h2::after {
+      width: 60px;
     }
 
-    @keyframes fall {
-      to {
-        transform: translate3d(var(--dr, 30px), 110vh, 0) rotate(720deg);
-        opacity: 0;
-      }
+    .editor-title::after {
+      margin-left: 0;
+      margin-right: auto;
     }
 
-    /* FOOTER */
-    footer {
-      padding: 24px 0;
-      text-align: center;
-      font-size: .7rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(125, 41, 55, .09);
+    .cover-issue::after {
+      display: none;
     }
 
-    footer em {
-      color: var(--wine);
-      font-style: normal;
-    }
+    @media (max-width: 900px) {
 
-    /* RESPONSIVE */
-    @media(max-width:900px) {
-      .hero {
+      /* All 2-col grids → 1 col */
+      .editor-grid {
         grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 60px 0 70px;
+        gap: 56px;
+        padding-top: 72px;
+        padding-bottom: 72px;
       }
 
-      .hero-art {
-        min-height: 420px;
+      .editor-right {
+        order: -1;
       }
 
-      .o1 {
-        width: 300px;
-        height: 300px;
-      }
-
-      .o2 {
-        width: 200px;
-        height: 200px;
-      }
-
-      .sgrid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .mgrid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .rgrid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .note-inner {
+      .bio-facts {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .wgrid {
+      /* Photo grid → all cards single col, height 300px */
+      .ed-grid {
         grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+
+      .ed-card,
+      .ed-card--1,
+      .ed-card--2,
+      .ed-card--3,
+      .ed-card--4,
+      .ed-card--5,
+      .ed-card--6 {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        --slot-h: 300px !important;
+      }
+
+      .ed-slot,
+      .ed-card--3 .ed-slot,
+      .childhood-slot {
+        height: 300px !important;
+        flex: 0 0 300px !important;
+        min-height: 300px !important;
+      }
+
+      .childhood-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .wishes-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      /* Flip cards → 2 col grid */
+      .things-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      /* Timeline → all left aligned */
+      .tl-line {
+        left: 4px !important;
+      }
+
+      .tl-item,
+      .tl-left,
+      .tl-right {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding-left: 36px !important;
+        padding-right: 0 !important;
+      }
+
+      .tl-item+.tl-item {
+        margin-top: 44px !important;
+      }
+
+      .tl-left .tl-dot,
+      .tl-right .tl-dot {
+        left: 0.5px !important;
+        right: auto !important;
+      }
+
+      .tl-left .tl-label {
+        text-align: left !important;
+      }
+
+      .tl-left .tl-card,
+      .tl-right .tl-card {
+        border-left: 2px solid var(--gold) !important;
+        border-right: 0 !important;
+        padding: 24px 24px !important;
+      }
+
+      /* Stats → 2×2 grid */
+      .stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      .stat:nth-child(2n) {
+        border-right: 0 !important;
+      }
+
+      .stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line) !important;
       }
     }
 
-    @media(max-width:520px) {
-      .frame {
-        width: calc(100% - 28px);
+    @media (max-width: 520px) {
+
+      /* Flip cards → 1 col */
+      .things-grid {
+        grid-template-columns: 1fr !important;
       }
 
-      h1 {
-        font-size: 4rem;
+      /* Stats → 2×2 grid */
+      .stats {
+        grid-template-columns: repeat(2, 1fr) !important;
       }
 
-      .hcard {
-        width: 275px;
-        padding: 22px;
+      /* Topbar center text: hide */
+      .topbar-issue {
+        display: none !important;
       }
 
-      .ct {
-        font-size: 3rem;
+      /* Cover side columns: hide on mobile */
+      .cover-lines,
+      .cover-credit {
+        display: none !important;
       }
 
-      .o1 {
-        width: 250px;
-        height: 250px;
+      .letter-box {
+        padding: 36px 24px 30px !important;
       }
 
-      .o2 {
-        width: 160px;
-        height: 160px;
-      }
-
-      .mgrid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .rgrid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .snum {
-        font-size: 2.8rem;
-      }
-
-      #twbox {
-        padding: 26px;
+      .back-cover-barcode {
+        position: static;
+        margin-top: 40px;
+        align-items: center;
       }
     }
 
-    @media(prefers-reduced-motion:reduce) {
+    /* ==========================================================
+       9. ACCESSIBILITY — reduced motion
+       ========================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
       *,
       *::before,
       *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+      }
+
+      .reveal,
+      .ci,
+      .letter-signature {
+        opacity: 1;
+        transform: none;
+      }
+
+      h2::after {
+        width: 60px !important;
+      }
+
+      .loader-line {
+        width: 200px;
       }
     }
   </style>
 </head>
 
-<body>
+<body class="is-loading">
 
-  <div id="loader">
-    <div class="loader-heart">♡</div>
-    <div class="loader-label">Getting your world ready…</div>
+  <!-- Stars -->
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <!-- Loader -->
+  <div id="loader" role="status" aria-label="Loading">
+    <div class="loader-cover">
+      <div class="loader-title" aria-label="Birthday">
+        <span style="--i:0">B</span><span style="--i:1">I</span><span style="--i:2">R</span><span
+          style="--i:3">T</span><span style="--i:4">H</span><span style="--i:5">D</span><span
+          style="--i:6">A</span><span style="--i:7">Y</span>
+      </div>
+      <div class="loader-line"></div>
+      <p class="loader-sub">Issue No. 1 · Special Edition</p>
+    </div>
   </div>
 
-  <canvas id="stars"></canvas>
-
-  <header class="frame topbar">
-    <div class="brand">a little world <em>♡</em></div>
-    <div class="top-note">a birthday surprise · made with love</div>
+  <!-- Topbar -->
+  <header class="topbar" id="topbar">
+    <a href="#main" class="topbar-brand" id="topbar-brand">ÉDITION</a>
+    <span class="topbar-issue">Disha Rathore · Birthday Special 2026</span>
+    <span class="topbar-year">2026</span>
   </header>
 
-  <main>
+  <!-- Main — sections will be added here -->
+  <main id="main">
 
-    <!-- HERO -->
-    <section class="frame hero" id="top">
-      <div>
-        <div class="eyebrow reveal">A little something, just for you</div>
-        <h1 class="reveal d1">I made a little <em>world for you.</em></h1>
-        <p class="hero-copy reveal d2">A tiny doorway to all the things I wanted to tell you, show you, and make you
-          smile. <strong>Every little detail here is for you.</strong></p>
-        <div class="btn-row reveal d3">
-          <button class="btn btn-p" id="openBtn">Open your little world ↗</button>
-          <a class="btn btn-g" href="#memories">Our memories ↓</a>
+    <!-- ====================== COVER ====================== -->
+    <section class="cover" id="cover" aria-label="Magazine cover">
+
+      <!-- Cover Photo slot -->
+      <div class="cover-photo ci has-photo pslot" id="coverPhotoSlot"
+        style="--d:0.1s; position:absolute; overflow:hidden;">
+        <!-- Layer 1: The photo -->
+        <img src="assets/solo/WhatsApp Image 2026-11-02 at 1.50.36 AM.jpeg" id="coverImg" alt="Disha Rathore"
+          style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; z-index:1;">
+        <!-- Layer 2: Gradient overlay for text readability -->
+        <div
+          style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.0) 25%, rgba(0,0,0,0.0) 70%, rgba(0,0,0,0.72) 100%); pointer-events:none; z-index:2;">
         </div>
-        <small class="hero-tiny reveal d4">Take your time. This little world is yours. ♡</small>
+        <!-- Vignette overlay -->
+        <div class="cover-vignette" style="z-index:2;" aria-hidden="true"></div>
       </div>
-      <div class="hero-art">
-        <span class="fheart" style="font-size:1.8rem;top:8%;left:8%;animation-delay:.4s">♡</span>
-        <span class="fheart" style="font-size:1rem;top:18%;right:8%;animation-delay:1.5s;color:var(--gold)">✦</span>
-        <span class="fheart" style="font-size:1.4rem;bottom:12%;right:6%;animation-delay:.9s">♡</span>
-        <div class="orbit o1">
-          <div class="odot" style="background:var(--gold);top:22px;left:52px"></div>
-          <div class="odot" style="background:var(--rose);bottom:28px;right:42px"></div>
+
+      <!-- Masthead -->
+      <div class="cover-masthead">
+        <h1 class="cover-name ci" style="--d:0.25s">DISHA</h1>
+      </div>
+
+      <!-- Cover lines -->
+      <ul class="cover-lines">
+        <li class="ci" style="--d:0.55s">From Agra — With Love</li>
+        <li class="ci" style="--d:0.65s">The Girl Who Changed Everything</li>
+        <li class="ci" style="--d:0.75s">Foodie. Brains. Baddie. All in One.</li>
+        <li class="ci" style="--d:0.85s">A Love Letter from Rishank</li>
+        <li class="ci" style="--d:0.95s">The Most Important Person in My World</li>
+      </ul>
+
+      <!-- Vertical credit -->
+      <p class="cover-credit ci" style="--d:0.9s">Made with all my love — Rishank</p>
+
+      <!-- Footer -->
+      <div class="cover-bottom ci" style="--d:0.7s">
+        <h2 class="cover-issue">The Birthday Issue · Disha Rathore Edition</h2>
+        <div class="cover-bottom-line"></div>
+        <p class="cover-dateline">Happy Birthday · <span id="coverDate">2026</span> · Special Edition</p>
+      </div>
+
+      <!-- Barcode -->
+      <div class="cover-barcode ci" style="--d:1s" aria-hidden="true">
+        <svg viewBox="0 0 51 28" preserveAspectRatio="none">
+          <rect x="0" width="2" height="28" />
+          <rect x="3" width="1" height="28" />
+          <rect x="5" width="1" height="28" />
+          <rect x="7" width="3" height="28" />
+          <rect x="11" width="1" height="28" />
+          <rect x="13" width="2" height="28" />
+          <rect x="16" width="1" height="28" />
+          <rect x="18" width="1" height="28" />
+          <rect x="20" width="2" height="28" />
+          <rect x="23" width="3" height="28" />
+          <rect x="27" width="1" height="28" />
+          <rect x="29" width="1" height="28" />
+          <rect x="31" width="2" height="28" />
+          <rect x="34" width="1" height="28" />
+          <rect x="36" width="3" height="28" />
+          <rect x="40" width="1" height="28" />
+          <rect x="42" width="2" height="28" />
+          <rect x="45" width="1" height="28" />
+          <rect x="47" width="1" height="28" />
+          <rect x="49" width="2" height="28" />
+        </svg>
+        <span>LOVE-2026</span>
+      </div>
+
+      <!-- Scroll CTA -->
+      <div class="cover-cta-wrap ci" style="--d:1.1s">
+        <button type="button" class="cover-cta" id="openMagazine">Open the magazine ↓</button>
+      </div>
+    </section>
+
+    <!-- ====================== EDITOR'S NOTE ====================== -->
+    <section class="editor" id="editors-note" aria-labelledby="editor-title">
+      <div class="container editor-grid">
+
+        <div class="editor-left">
+          <p class="editor-letter reveal">
+            <span class="dropcap" aria-hidden="true">D</span><span class="sr-only"
+              style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">D</span>ear Disha,
+            <br><br>
+            There is something I have always found difficult to say out loud — not because I don't feel it, but because
+            some things feel too big for words. So I built this instead. Every page of this magazine is something I have
+            wanted to tell you for a long time.
+            <br><br>
+            Since you came into my life, everything has been better. You changed me. You taught me things I did not even
+            know I needed to learn. And the way you love and care — quietly, completely — it is something I will never
+            stop being grateful for.
+            <br><br>
+            This is me trying. This is me learning to show you how much you mean.
+            <br><br>
+            Happy Birthday, Disha.
+          </p>
+          <div class="editor-rule reveal d2"></div>
+          <p class="editor-sign reveal d2">— Rishank · Editor in Chief, Her Heart</p>
         </div>
-        <div class="orbit o2">
-          <div class="odot" style="background:var(--sage);top:14px;right:36px"></div>
+
+        <div class="editor-right">
+          <span class="section-kicker reveal">From the Editor</span>
+          <h2 class="editor-title reveal d1" id="editor-title">Before You Begin Reading</h2>
+          <p class="editor-body reveal d2">
+            She walked in from Agra and somehow rearranged everything — in the best possible way.
+          </p>
+          <p class="editor-turn reveal d3">Turn the page. This is your issue.</p>
         </div>
-        <div class="hcard">
-          <div class="stamp-row">
-            <div class="stamp">♡<small>LOVE</small></div>
+
+      </div>
+    </section>
+
+    <!-- ====================== CELEBRITY BIO ====================== -->
+    <section class="bio" id="cover-story" aria-labelledby="bio-title">
+      <div class="container">
+
+        <header class="bio-header">
+          <span class="bio-overline reveal">Cover Story — Woman of the Year</span>
+          <h2 class="bio-title" id="bio-title">
+            <span class="bio-title-line reveal d1">The Woman. The Myth.</span>
+            <span class="bio-title-legend reveal d2">The Legend.</span>
+          </h2>
+          <div class="bio-header-rule reveal d3"></div>
+        </header>
+
+        <div class="stats" role="list">
+          <div class="stat" role="listitem">
+            <div class="reveal">
+              <span class="stat-num" style="font-size:clamp(2.4rem,4.8vw,4.5rem);">AGRA</span>
+              <span class="stat-label">Where the magic began</span>
+            </div>
           </div>
-          <div class="ck">A note from my heart</div>
-          <div class="ct">Happy<br><em>Birthday.</em></div>
-          <div class="cdiv">✦</div>
-          <div class="cc">For the girl who makes<br>ordinary days feel like magic.</div>
-          <div class="csig">with all my love, Rishank</div>
+          <div class="stat" role="listitem">
+            <div class="reveal d1">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Always the most gorgeous</span>
+            </div>
+          </div>
+          <div class="stat" role="listitem">
+            <div class="reveal d2">
+              <span class="stat-num">∞</span>
+              <span class="stat-label">Cafes &amp; restaurants to explore</span>
+            </div>
+          </div>
+          <div class="stat" role="listitem">
+            <div class="reveal d3">
+              <span class="stat-num">1</span>
+              <span class="stat-label">Of her kind. Anywhere.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAST FACTS -->
+        <div class="bio-facts" role="list">
+          <div class="bio-fact-card reveal" role="listitem">
+            <span class="bio-fact-bullet" aria-hidden="true">✦</span>
+            <div class="bio-fact-content">
+              <h3 class="bio-fact-head">The Brain</h3>
+              <p class="bio-fact-sub">Genuinely one of the sharpest people you will ever meet. Studies? She handles it
+                like she handles everything — effortlessly.</p>
+            </div>
+          </div>
+
+          <div class="bio-fact-card reveal d1" role="listitem">
+            <span class="bio-fact-bullet" aria-hidden="true">✦</span>
+            <div class="bio-fact-content">
+              <h3 class="bio-fact-head">The Foodie</h3>
+              <p class="bio-fact-sub">Born with a radar for the best cafes and restaurants. If there is good food
+                somewhere, Disha will find it. Always.</p>
+            </div>
+          </div>
+
+          <div class="bio-fact-card reveal d2" role="listitem">
+            <span class="bio-fact-bullet" aria-hidden="true">✦</span>
+            <div class="bio-fact-content">
+              <h3 class="bio-fact-head">The Baddie</h3>
+              <p class="bio-fact-sub">The kind of presence that makes a room feel different. Carries herself with a
+                confidence that is simply impossible to ignore.</p>
+            </div>
+          </div>
+
+          <div class="bio-fact-card reveal d3" role="listitem">
+            <span class="bio-fact-bullet" aria-hidden="true">✦</span>
+            <div class="bio-fact-content">
+              <h3 class="bio-fact-head">The Goof</h3>
+              <p class="bio-fact-sub">Will do the most unhinged, cringe, ridiculous thing just to make you laugh. And it
+                works. Every single time.</p>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="bio-quote reveal">
+          <p>“She walked into my life and everything quietly became better. I do not know how she did it. I am just glad
+            she did.”</p>
+          <cite>— Rishank</cite>
+        </blockquote>
+
+      </div>
+    </section>
+
+    <!-- ====================== PHOTO EDITORIAL ====================== -->
+    <section class="editorial" id="editorial" aria-labelledby="ed-title">
+      <div class="container">
+
+        <header class="ed-header">
+          <div>
+            <span class="ed-overline reveal">Exclusive Photo Spread</span>
+            <h2 class="ed-title reveal d1" id="ed-title">The Editorial</h2>
+          </div>
+          <p class="ed-subline reveal d2">Six frames. Six moments. All ours.</p>
+        </header>
+        <div class="ed-rule reveal d3"></div>
+
+        <div class="ed-grid">
+
+          <figure class="ed-card ed-card--1 reveal">
+            <div class="ed-slot has-photo pslot" id="s1" style="position:relative; overflow:hidden; height:480px;">
+              <img src="assets/solo/WhatsApp Image 2026-11-02 at 1.50.31 AM.jpeg" alt="Disha Rathore"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;">
+              <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+              </div>
+              <span class="phrt">♡</span>
+            </div>
+            <figcaption class="ed-caption">
+              <span class="ed-cap">The Cover Story</span>
+              <span class="ed-quote">The one I could stare at all day.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ed-card ed-card--2 reveal d2">
+            <div class="ed-slot has-photo pslot" id="s2" style="position:relative; overflow:hidden; height:380px;">
+              <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.32 AM (1).jpeg" alt="Disha and Rishank"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 10%;">
+              <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+              </div>
+              <span class="phrt">♡</span>
+            </div>
+            <figcaption class="ed-caption">
+              <span class="ed-cap">Us</span>
+              <span class="ed-quote">My favourite place.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ed-card ed-card--3 reveal">
+            <div class="ed-slot has-photo pslot" id="s3" style="position:relative; overflow:hidden; height:380px; min-height:380px;">
+              <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.34 AM.jpeg" alt="Disha and Rishank"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+              <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+              </div>
+              <span class="phrt">♡</span>
+            </div>
+            <figcaption class="ed-caption">
+              <span class="ed-cap">Her Element</span>
+              <span class="ed-quote">Happiest with good food and good company.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ed-card ed-card--4 reveal d1">
+            <div class="ed-slot has-photo pslot" id="s4" style="position:relative; overflow:hidden; height:380px;">
+              <img src="assets/solo/WhatsApp Image 2026-11-02 at 1.50.33 AM (1).jpeg" alt="Disha Rathore"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;">
+              <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+              </div>
+              <span class="phrt">♡</span>
+            </div>
+            <figcaption class="ed-caption">
+              <span class="ed-cap">The Goof</span>
+              <span class="ed-quote">This is who she is when she forgets anyone is watching.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ed-card ed-card--5 reveal d1">
+            <div class="ed-slot has-photo pslot" id="s5" style="position:relative; overflow:hidden; height:480px;">
+              <img src="assets/solo/WhatsApp Image 2026-11-02 at 1.50.36 AM.jpeg" alt="Disha Rathore"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;">
+              <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+              </div>
+              <span class="phrt">♡</span>
+            </div>
+            <figcaption class="ed-caption">
+              <span class="ed-cap">The Real One</span>
+              <span class="ed-quote">The smile she doesn't know I keep thinking about.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="ed-card ed-card--6 reveal d2">
+            <div class="ed-slot has-photo pslot" id="s6" style="position:relative; overflow:hidden; height:380px;">
+              <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.54.35 AM.jpeg" alt="Disha and Rishank"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+              <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+              </div>
+              <span class="phrt">♡</span>
+            </div>
+            <figcaption class="ed-caption">
+              <span class="ed-cap">The Moment</span>
+              <span class="ed-quote">Every photo with you is my favourite.</span>
+            </figcaption>
+          </figure>
+
+        </div>
+
+        <!-- CHILDHOOD EDITION -->
+        <div class="childhood-wrap">
+          <header class="childhood-header">
+            <span class="ed-overline reveal">Throwback Editorial — Then and Now</span>
+            <h3 class="childhood-title reveal d1">Childhood Edition</h3>
+            <p class="childhood-subline reveal d2">Before she became my favourite person — she was already someone's
+              whole world.</p>
+          </header>
+
+          <div class="childhood-grid">
+
+            <figure class="childhood-card reveal">
+              <div class="ed-slot childhood-slot has-photo pslot" id="c1" style="position:relative; overflow:hidden;">
+                <img src="assets/childhood/cute.jpeg" alt="Baby Disha"
+                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+                <div
+                  style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+                </div>
+                <span class="phrt">♡</span>
+              </div>
+              <figcaption class="ed-caption">
+                <span class="ed-cap">The Beginning</span>
+                <span class="ed-quote">Before Agra knew what it had.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="childhood-card reveal d1">
+              <div class="ed-slot childhood-slot has-photo pslot" id="c2" style="position:relative; overflow:hidden;">
+                <img src="assets/childhood/baddieinchildhood.jpeg" alt="Little Disha"
+                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+                <div
+                  style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+                </div>
+                <span class="phrt">♡</span>
+              </div>
+              <figcaption class="ed-caption">
+                <span class="ed-cap">Little Disha</span>
+                <span class="ed-quote">Already the most interesting person in the room.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="childhood-card reveal d2">
+              <div class="ed-slot childhood-slot has-photo pslot" id="c3" style="position:relative; overflow:hidden;">
+                <img src="assets/childhood/attitude.jpeg" alt="Young Disha"
+                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;">
+                <div
+                  style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.4) 100%);pointer-events:none;z-index:1;">
+                </div>
+                <span class="phrt">♡</span>
+              </div>
+              <figcaption class="ed-caption">
+                <span class="ed-cap">The OG</span>
+                <span class="ed-quote">This is where the story started.</span>
+              </figcaption>
+            </figure>
+
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- STATS -->
-    <div class="stats">
-      <div class="frame">
-        <div class="sgrid">
-          <div class="reveal"><span class="snum" id="daysNum">—</span><span class="slbl">Days beside you</span></div>
-          <div class="reveal d1"><span class="snum">∞</span><span class="slbl">Memories made</span></div>
-          <div class="reveal d2"><span class="snum">∞</span><span class="slbl">Reasons I love you</span></div>
-          <div class="reveal d3"><span class="snum">1</span><span class="slbl">You. Always you.</span></div>
-        </div>
+    <!-- ====================== MORE OF US (STRIP) ====================== -->
+    <section style="background:#0D0D0D; padding: 70px 0 0;" id="more-of-us" aria-label="More photos of us">
+      <div class="frame" style="text-align:center; padding-bottom:32px;">
+        <span class="strip-overline reveal">AND THERE ARE MORE WHERE THAT CAME FROM</span>
+        <h3 class="strip-title reveal d1">More of Us</h3>
       </div>
-    </div>
-
-    <!-- MEMORIES -->
-    <section class="memories" id="memories">
-      <div class="frame">
-        <div class="sec-head reveal">
-          <div class="kicker">little moments · big feelings</div>
-          <h2>Our tiny corner of the universe</h2>
-          <p>Click any frame to add your favourite photo. These spaces are made for the memories only we know.</p>
-        </div>
-        <div class="mgrid">
-
-          <article class="mcard reveal" style="--tilt:-1.5deg">
-            <label for="p1">
-              <div class="pslot" id="s1" style="background:linear-gradient(145deg,#f1d9d9,#f6ead9 55%,#dce1d2)">
-                <div class="pph"><span class="pnum">01</span><small>Add your favourite photo</small></div>
-                <div class="povr"><span>+</span>Add photo</div>
-                <span class="phrt">♡</span>
-              </div>
-            </label>
-            <input type="file" id="p1" accept="image/*" data-slot="s1">
-            <div class="mcap">My favourite kind of day</div>
-            <div class="msub">a memory to keep close</div>
-          </article>
-
-          <article class="mcard reveal d1" style="--tilt:1.2deg">
-            <label for="p2">
-              <div class="pslot" id="s2" style="background:linear-gradient(145deg,#e7d9ca,#f4dce0 55%,#e9e5d4)">
-                <div class="pph"><span class="pnum">02</span><small>Add a funny memory</small></div>
-                <div class="povr"><span>+</span>Add photo</div>
-                <span class="phrt">♡</span>
-              </div>
-            </label>
-            <input type="file" id="p2" accept="image/*" data-slot="s2">
-            <div class="mcap">You make me laugh</div>
-            <div class="msub">the little things count, too</div>
-          </article>
-
-          <article class="mcard reveal d2" style="--tilt:-.8deg">
-            <label for="p3">
-              <div class="pslot" id="s3" style="background:linear-gradient(145deg,#e7e4d6,#f5e9d8 55%,#e5c4cb)">
-                <div class="pph"><span class="pnum">03</span><small>Add a favourite selfie</small></div>
-                <div class="povr"><span>+</span>Add photo</div>
-                <span class="phrt">♡</span>
-              </div>
-            </label>
-            <input type="file" id="p3" accept="image/*" data-slot="s3">
-            <div class="mcap">A little closer to you</div>
-            <div class="msub">one of my favourite feelings</div>
-          </article>
-
-          <article class="mcard reveal d1" style="--tilt:1.5deg">
-            <label for="p4">
-              <div class="pslot" id="s4" style="background:linear-gradient(145deg,#e0e5d8,#f5dfdf 55%,#eedcc7)">
-                <div class="pph"><span class="pnum">04</span><small>Add an everyday moment</small></div>
-                <div class="povr"><span>+</span>Add photo</div>
-                <span class="phrt">♡</span>
-              </div>
-            </label>
-            <input type="file" id="p4" accept="image/*" data-slot="s4">
-            <div class="mcap">Ordinary, but ours</div>
-            <div class="msub">the simplest days stay with me</div>
-          </article>
-
-          <article class="mcard reveal d2" style="--tilt:-1deg">
-            <label for="p5">
-              <div class="pslot" id="s5" style="background:linear-gradient(145deg,#f0ddd8,#f8ecd9 55%,#dfe2d4)">
-                <div class="pph"><span class="pnum">05</span><small>Add a candid photo</small></div>
-                <div class="povr"><span>+</span>Add photo</div>
-                <span class="phrt">♡</span>
-              </div>
-            </label>
-            <input type="file" id="p5" accept="image/*" data-slot="s5">
-            <div class="mcap">I hope you see what I see</div>
-            <div class="msub">a little reminder of your magic</div>
-          </article>
-
-          <article class="mcard reveal d3" style="--tilt:.8deg">
-            <label for="p6">
-              <div class="pslot" id="s6" style="background:linear-gradient(145deg,#e7d7ca,#ead9e0 55%,#dfe5d8)">
-                <div class="pph"><span class="pnum">06</span><small>Add a photo you love</small></div>
-                <div class="povr"><span>+</span>Add photo</div>
-                <span class="phrt">♡</span>
-              </div>
-            </label>
-            <input type="file" id="p6" accept="image/*" data-slot="s6">
-            <div class="mcap">This is only the beginning</div>
-            <div class="msub">more little moments to come</div>
-          </article>
-
-        </div>
+      <div class="more-strip">
+        <img src="assets/solo/WhatsApp Image 2026-11-02 at 1.50.36 AM (1).jpeg" alt="Disha" loading="lazy">
+        <img src="assets/solo/WhatsApp Image 2026-11-02 at 1.50.33 AM.jpeg" alt="Disha" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.32 AM.jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.32 AM (1).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.32 AM (2).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.35 AM (1).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.35 AM (2).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.35 AM (3).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.35 AM (4).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.37 AM.jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.37 AM (1).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.38 AM.jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.50.39 AM.jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.54.33 AM (1).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.54.34 AM (1).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.54.35 AM (3).jpeg" alt="Disha and Rishank" loading="lazy">
+        <img src="assets/couple/WhatsApp Image 2026-11-02 at 1.54.35 AM.jpeg" alt="Disha and Rishank" loading="lazy">
       </div>
     </section>
 
-    <!-- REASONS I LOVE YOU -->
-    <section id="reasons">
-      <div class="frame">
-        <div class="sec-head reveal">
-          <div class="kicker">flip each card</div>
-          <h2>A few of the reasons…</h2>
-          <p>Tap any card to reveal a little thought I have been quietly keeping.</p>
-        </div>
-        <div class="rgrid">
+    <!-- ====================== 8 THINGS ====================== -->
+    <section class="things" id="eight-things" aria-labelledby="things-title">
+      <div class="container">
 
-          <div class="rcard reveal" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">01</div>
-                <div class="ricon">♡</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">The way your eyes light up when you talk about something you love.</div>
-              </div>
-            </div>
-          </div>
+        <header class="things-header">
+          <span class="things-tag reveal">Feature</span>
+          <h2 class="things-title" id="things-title">
+            <span class="reveal d1">8 Things We Can't</span>
+            <span class="things-title-2 reveal d2">Get Enough Of</span>
+          </h2>
+          <p class="things-sub reveal d3">Eight things about Disha Rathore that are simply impossible to ignore.</p>
+        </header>
 
-          <div class="rcard reveal d1" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">02</div>
-                <div class="ricon">✦</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">How you make even the most ordinary moments feel warm and completely right.</div>
-              </div>
-            </div>
-          </div>
+        <div class="things-grid">
 
-          <div class="rcard reveal d2" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">03</div>
-                <div class="ricon">☼</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">Your laugh — the real one, not the polite one — is my absolute favourite sound.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rcard reveal d3" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">04</div>
-                <div class="ricon">♡</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">The way you care — quietly, deeply, without needing anyone to notice.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rcard reveal" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">05</div>
-                <div class="ricon">✧</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">How you always know what to say — and when to just quietly be there.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rcard reveal d1" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">06</div>
-                <div class="ricon">♡</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">The way you dream — softly, bravely, with a warmth that makes me believe in things
-                  too.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rcard reveal d2" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">07</div>
-                <div class="ricon">✦</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">You make me want to be a better version of myself — just by being you.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rcard reveal d3" onclick="this.classList.toggle('flip')">
-            <div class="rinner">
-              <div class="rfront">
-                <div class="rnum">08</div>
-                <div class="ricon">♡</div>
-                <div class="rhint">tap to reveal</div>
-              </div>
-              <div class="rback">
-                <div class="rtext">Choosing you, every single day, is the easiest thing I have ever done.</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- NOTE -->
-    <section class="note" id="note">
-      <div class="frame">
-        <div class="note-inner">
-          <div class="lwrap">
-            <div class="lcard reveal">
-              <div class="kicker">a little reminder</div>
-              <h3>You are so loved.</h3>
-              <p>On your loud days and your quiet days, your happy days and the ones that feel a little too much — I
-                hope you never forget how much light you bring into every room you walk into.</p>
-              <p>That light is you. It always has been.</p>
-              <div class="lsig">always cheering for you ♡</div>
-              <span class="lhrt">♡</span>
-            </div>
-          </div>
-          <div class="note-copy reveal d2">
-            <div class="kicker">things I hope you always remember</div>
-            <h2>On days you forget how wonderful you are…</h2>
-            <p>This page is a small reminder that you never have to be perfect to be loved. You can rest, change your
-              mind, take your time — and still be the incredible person you are.</p>
-            <div class="promises">
-              <div class="promise">
-                <div class="pico">✦</div>
-                <p>You deserve the same kindness you so easily give to everyone else.</p>
-              </div>
-              <div class="promise">
-                <div class="pico">♡</div>
-                <p>Your dreams matter — even the ones you are still quietly figuring out.</p>
-              </div>
-              <div class="promise">
-                <div class="pico">☼</div>
-                <p>You do not have to earn rest, care, or a little happiness.</p>
-              </div>
-              <div class="promise">
-                <div class="pico">✧</div>
-                <p>The world is softer and more beautiful because you are in it.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WISHES -->
-    <section class="wishes" id="wishes">
-      <div class="frame">
-        <div class="sec-head reveal">
-          <div class="kicker">tap a little surprise</div>
-          <h2>Three tiny wishes for you</h2>
-          <p>Tap each card. A small thought is waiting inside.</p>
-        </div>
-        <div class="wgrid">
-          <button class="wcard reveal" type="button">
-            <span class="wico">♡</span>
-            <span class="wtit">A wish for your heart</span>
-            <span class="wtxt">May you feel loved in the little moments — not just on the special days. May someone
-              always notice the quiet effort you put into everything.</span>
+          <button type="button" class="rcard reveal" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 01</span>
+                <span class="rcard-icon" aria-hidden="true">♡</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 01</span>
+                <span class="rcard-text">The way she lights up when she finds a new cafe worth visiting. That excitement
+                  is completely contagious.</span>
+                <span class="rcard-back-mark" aria-hidden="true">♡</span>
+              </span>
+            </span>
           </button>
-          <button class="wcard reveal d1" type="button">
-            <span class="wico">✦</span>
-            <span class="wtit">A wish for your dreams</span>
-            <span class="wtxt">May you keep finding the courage to try, to grow, and to become whoever you want to be —
-              and may the path feel a little less scary than it looks.</span>
+
+          <button type="button" class="rcard reveal d1" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 02</span>
+                <span class="rcard-icon" aria-hidden="true">✦</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 02</span>
+                <span class="rcard-text">Her brain. She is sharper and more intelligent than she probably even realises.
+                  It is genuinely incredible.</span>
+                <span class="rcard-back-mark" aria-hidden="true">✦</span>
+              </span>
+            </span>
           </button>
-          <button class="wcard reveal d2" type="button">
-            <span class="wico">☼</span>
-            <span class="wtit">A wish for your days</span>
-            <span class="wtxt">May ordinary Tuesdays surprise you with something beautiful. May every year ahead hold
-              more joy, more laughter, and so much more of the good stuff.</span>
+
+          <button type="button" class="rcard reveal d2" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 03</span>
+                <span class="rcard-icon" aria-hidden="true">☼</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 03</span>
+                <span class="rcard-text">Her confidence. She carries herself in a way that makes everyone else in the
+                  room look up.</span>
+                <span class="rcard-back-mark" aria-hidden="true">☼</span>
+              </span>
+            </span>
           </button>
+
+          <button type="button" class="rcard reveal d3" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 04</span>
+                <span class="rcard-icon" aria-hidden="true">♡</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 04</span>
+                <span class="rcard-text">The random, cringe, unhinged things she does just to make people laugh. And it
+                  always, always works.</span>
+                <span class="rcard-back-mark" aria-hidden="true">♡</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="rcard reveal" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 05</span>
+                <span class="rcard-icon" aria-hidden="true">✧</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 05</span>
+                <span class="rcard-text">The way she cares. Quietly. Without making a big deal of it. That kind of love
+                  is rare.</span>
+                <span class="rcard-back-mark" aria-hidden="true">✧</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="rcard reveal d1" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 06</span>
+                <span class="rcard-icon" aria-hidden="true">♡</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 06</span>
+                <span class="rcard-text">From Agra, with the whole world ahead of her — and she is meeting it exactly
+                  the way she should.</span>
+                <span class="rcard-back-mark" aria-hidden="true">♡</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="rcard reveal d2" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 07</span>
+                <span class="rcard-icon" aria-hidden="true">✦</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 07</span>
+                <span class="rcard-text">She changed me. Without even trying. She made me want to be better — and that
+                  is not something everyone can do.</span>
+                <span class="rcard-back-mark" aria-hidden="true">✦</span>
+              </span>
+            </span>
+          </button>
+
+          <button type="button" class="rcard reveal d3" aria-pressed="false">
+            <span class="rcard-inner">
+              <span class="rcard-face rcard-front">
+                <span class="rcard-no">No. 08</span>
+                <span class="rcard-icon" aria-hidden="true">★</span>
+                <span class="rcard-tap">Tap to read</span>
+              </span>
+              <span class="rcard-face rcard-back">
+                <span class="rcard-back-no">No. 08</span>
+                <span class="rcard-text">Choosing to have her in my life. It is the best decision I did not even know I
+                  was making.</span>
+                <span class="rcard-back-mark" aria-hidden="true">★</span>
+              </span>
+            </span>
+          </button>
+
         </div>
       </div>
     </section>
 
-    <!-- FINAL LETTER -->
-    <section class="frame lsec" id="letter" style="padding:100px 0;">
-      <div style="max-width:680px;margin:0 auto;">
-        <div class="sec-head reveal" style="margin-bottom:24px;">
-          <div class="kicker">before you go</div>
-          <h2>One last little thing…</h2>
-          <p>If this tiny world could tell you just one thing, I hope it would be this: your birthday is a celebration
-            of you — your heart, your laugh, your dreams, your whole wonderfully-you self.</p>
+    <!-- ====================== LOVE STORY TIMELINE ====================== -->
+    <section class="story" id="love-story" aria-labelledby="story-title">
+      <div class="container">
+
+        <header class="story-header">
+          <span class="story-overline reveal">The Story So Far</span>
+          <h2 class="story-title reveal d1" id="story-title">How It All Began</h2>
+        </header>
+
+        <div class="timeline">
+          <span class="tl-line reveal" aria-hidden="true"></span>
+
+          <ol class="tl-list">
+            <li class="tl-item tl-left reveal">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label">Day One</span>
+              <div class="tl-card">
+                <h3 class="tl-title">The Day Everything Changed</h3>
+                <p class="tl-body">I don't know exactly when it happened. But at some point I looked up and she was just
+                  — there. And everything felt different.</p>
+              </div>
+            </li>
+
+            <li class="tl-item tl-right reveal d1">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label">First Memory</span>
+              <div class="tl-card">
+                <h3 class="tl-title">She Started Changing Things</h3>
+                <p class="tl-body">She did not try to. She just came in and quietly, slowly, made everything around her
+                  better. Including me.</p>
+              </div>
+            </li>
+
+            <li class="tl-item tl-left reveal">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label">Every Day Since</span>
+              <div class="tl-card">
+                <h3 class="tl-title">What She Taught Me</h3>
+                <p class="tl-body">How to care more. How to show up. How to love better. I am still learning — but she
+                  is the reason I am trying.</p>
+              </div>
+            </li>
+
+            <li class="tl-item tl-right reveal d1">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label">Today · 2026</span>
+              <div class="tl-card">
+                <h3 class="tl-title">Happy Birthday, Disha.</h3>
+                <p class="tl-body">This is the day the whole world gets to celebrate you. I hope you feel every single
+                  bit of how loved you are. Today and every ordinary day after it.</p>
+              </div>
+            </li>
+          </ol>
         </div>
-        <span class="fheart">♡</span>
-        <button class="btn btn-p reveal" id="openLetter">Open your letter ✉</button>
-        <div id="twbox">
-          <div id="twtext"></div>
-          <span class="curs" id="twc"></span>
-          <span class="twsig">Rishank ♡</span>
+
+      </div>
+    </section>
+
+    <!-- ====================== WISHES ====================== -->
+    <section class="wishes-section" id="wishes" aria-labelledby="wishes-title">
+      <div class="container">
+        <header class="wishes-header">
+          <span class="bio-overline reveal">Birthday Blessings · Special Spread</span>
+          <h2 class="wishes-title reveal d1" id="wishes-title">Wishes for the Year Ahead</h2>
+          <p class="wishes-subline reveal d2">Three blessings for the girl who deserves the whole world.</p>
+        </header>
+
+        <div class="wishes-grid" role="list">
+          <div class="wish-card reveal" role="listitem">
+            <span class="wish-num">01</span>
+            <span class="wish-icon" aria-hidden="true">✦</span>
+            <h3 class="wish-head">A wish for your heart</h3>
+            <p class="wish-body">May you always feel as loved as you truly are — not just on the special days, but on
+              all the ordinary ones too.</p>
+          </div>
+
+          <div class="wish-card reveal d1" role="listitem">
+            <span class="wish-num">02</span>
+            <span class="wish-icon" aria-hidden="true">✦</span>
+            <h3 class="wish-head">A wish for your adventures</h3>
+            <p class="wish-body">May you find every hidden cafe, every perfect plate of food, every beautiful city that
+              you deserve to explore.</p>
+          </div>
+
+          <div class="wish-card reveal d2" role="listitem">
+            <span class="wish-num">03</span>
+            <span class="wish-icon" aria-hidden="true">✦</span>
+            <h3 class="wish-head">A wish for your future</h3>
+            <p class="wish-body">May this year bring you everything you want — the success, the happiness, and all the
+              good food. Especially the good food.</p>
+          </div>
         </div>
-        <span class="fsig reveal">Made with all my love, Rishank ♡</span>
+      </div>
+    </section>
+
+    <!-- ====================== THE LETTER ====================== -->
+    <section class="letter-section" id="letter" aria-labelledby="letter-title">
+      <div class="container">
+
+        <header class="letter-header">
+          <span class="section-kicker reveal">Letters — Special Edition</span>
+          <h2 class="letter-title reveal d1" id="letter-title">One Last Thing</h2>
+          <p class="letter-subline reveal d2">Before you close this issue.</p>
+        </header>
+
+        <div class="letter-wrap reveal d3">
+          <button type="button" class="letter-btn" id="openLetterBtn" aria-expanded="false" aria-controls="letterBox">
+            Open your letter ✉
+          </button>
+
+          <div class="letter-box" id="letterBox" role="region" aria-label="Personal letter">
+            <div class="letter-text" id="letterText" aria-live="polite"></div>
+            <div class="letter-signature" id="letterSignature" aria-label="Signed: Rishank">
+              Rishank ♡
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================== BACK COVER ====================== -->
+    <section class="back-cover" id="back-cover" aria-label="Magazine back cover">
+      <div class="container back-cover-inner">
+
+        <p class="back-cover-name reveal">DISHA</p>
+        <div class="back-cover-line reveal d1"></div>
+        <p class="back-cover-issue reveal d2">DISHA RATHORE · AGRA · 2026</p>
+        <p class="back-cover-credit reveal d3">MADE WITH ALL MY LOVE — RISHANK</p>
+
+        <!-- Decorative barcode -->
+        <div class="back-cover-barcode reveal d4" aria-hidden="true">
+          <svg viewBox="0 0 51 28" preserveAspectRatio="none">
+            <rect x="0" width="2" height="28" />
+            <rect x="3" width="1" height="28" />
+            <rect x="5" width="1" height="28" />
+            <rect x="7" width="3" height="28" />
+            <rect x="11" width="1" height="28" />
+            <rect x="13" width="2" height="28" />
+            <rect x="16" width="1" height="28" />
+            <rect x="18" width="1" height="28" />
+            <rect x="20" width="2" height="28" />
+            <rect x="23" width="3" height="28" />
+            <rect x="27" width="1" height="28" />
+            <rect x="29" width="1" height="28" />
+            <rect x="31" width="2" height="28" />
+            <rect x="34" width="1" height="28" />
+            <rect x="36" width="3" height="28" />
+            <rect x="40" width="1" height="28" />
+            <rect x="42" width="2" height="28" />
+            <rect x="45" width="1" height="28" />
+            <rect x="47" width="1" height="28" />
+            <rect x="49" width="2" height="28" />
+          </svg>
+          <span>LOVE-2026</span>
+        </div>
+
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <div class="frame">a little world, made just for you <em>♡</em> · keep this one close</div>
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-text">a magazine made just for you ✦ édition no. 1 · 2026</p>
+    </div>
   </footer>
 
   <script>
-    // LOADER
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('gone');
-        initReveal();
-        initStars();
-      }, 1300);
-    });
+    (() => {
+      'use strict';
 
-    // STARS CANVAS
-    function initStars() {
-      const c = document.getElementById('stars');
-      const ctx = c.getContext('2d');
-      let stars = [];
-      function resize() { c.width = innerWidth; c.height = innerHeight; }
-      resize();
-      window.addEventListener('resize', resize);
-      for (let i = 0; i < 90; i++) {
-        stars.push({ x: Math.random() * c.width, y: Math.random() * c.height, r: Math.random() * 1.4 + .3, op: Math.random(), dir: Math.random() > .5 ? 1 : -1 });
-      }
-      (function draw() {
-        ctx.clearRect(0, 0, c.width, c.height);
-        stars.forEach(s => {
-          s.op += .004 * s.dir;
-          if (s.op > 1 || s.op < 0) s.dir *= -1;
-          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(185,148,84,${s.op * .45})`; ctx.fill();
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ========================================================
+         LOADER — fade out after 2200ms
+         ======================================================== */
+      const loader = document.getElementById('loader');
+      window.setTimeout(() => {
+        loader.classList.add('hide');
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('page-ready');
+        loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+      }, 2200);
+
+      /* ========================================================
+         SCROLL REVEAL
+         ======================================================== */
+      const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('vis');
+            obs.unobserve(entry.target);
+          }
         });
-        requestAnimationFrame(draw);
-      })();
-    }
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    // SCROLL REVEAL
-    function initReveal() {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-      }, { threshold: .11 });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    }
+      // Exposed so future sections can register dynamically added nodes
+      window.observeReveals = (root = document) => {
+        root.querySelectorAll('.reveal:not(.vis)').forEach(el => revealObserver.observe(el));
+      };
+      window.observeReveals();
 
-    // HERO BUTTON
-    document.getElementById('openBtn').addEventListener('click', () => {
-      document.getElementById('memories').scrollIntoView({ behavior: 'smooth' });
-      sprinkle(22);
-    });
+      /* ========================================================
+         CONFETTI — sprinkle(n)
+         ======================================================== */
+      const CONFETTI_SYMBOLS = ['✦', '★', '◆', '▪', '✧'];
+      const CONFETTI_COLORS = ['#C9A84C', '#E2C97E', '#F9F8F6', '#C27F8A'];
+      const rand = (min, max) => Math.random() * (max - min) + min;
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-    // PHOTO UPLOAD
-    document.querySelectorAll('input[type=file]').forEach(inp => {
-      inp.addEventListener('change', function () {
-        const slot = document.getElementById(this.dataset.slot);
-        const file = this.files[0];
-        if (!file) return;
-        const fr = new FileReader();
-        fr.onload = e => {
-          const ph = slot.querySelector('.pph');
-          if (ph) ph.style.display = 'none';
-          let img = slot.querySelector('img.upl');
-          if (!img) { img = document.createElement('img'); img.className = 'upl'; slot.insertBefore(img, slot.firstChild); }
-          img.src = e.target.result;
-          sprinkle(10);
-        };
-        fr.readAsDataURL(file);
+      window.sprinkle = function sprinkle(n = 40) {
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < n; i++) {
+          const el = document.createElement('span');
+          el.className = 'confetti';
+          el.setAttribute('aria-hidden', 'true');
+          el.textContent = pick(CONFETTI_SYMBOLS);
+          el.style.left = rand(0, 100) + 'vw';
+          el.style.color = pick(CONFETTI_COLORS);
+          el.style.fontSize = rand(0.6, 1.4).toFixed(2) + 'rem';
+          el.style.setProperty('--dur', rand(2.8, 4.2).toFixed(2) + 's');
+          el.style.setProperty('--delay', rand(0, 0.7).toFixed(2) + 's');
+          el.style.setProperty('--drift', rand(-120, 120).toFixed(0) + 'px');
+          el.style.setProperty('--spin', (rand(180, 720) * (Math.random() < 0.5 ? -1 : 1)).toFixed(0) + 'deg');
+          frag.appendChild(el);
+          window.setTimeout(() => el.remove(), 5000);
+        }
+        document.body.appendChild(frag);
+      };
+
+      /* ========================================================
+         COVER — open-the-magazine CTA
+         ======================================================== */
+      document.getElementById('openMagazine').addEventListener('click', () => {
+        window.sprinkle(20);
+        const cover = document.getElementById('cover');
+        const next = cover.nextElementSibling;
+        if (next) {
+          next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollBy({ top: cover.offsetHeight, behavior: 'smooth' });
+        }
       });
-    });
 
-    // WISH CARDS
-    document.querySelectorAll('.wcard').forEach(c => c.addEventListener('click', () => c.classList.toggle('open')));
+      /* ========================================================
+         8 THINGS — flip cards
+         ======================================================== */
+      const rcards = Array.from(document.querySelectorAll('.rcard'));
+      const readCards = new Set();
+      let allReadCelebrated = false;
 
-    // TYPEWRITER
-    const letter = `My favourite person,
+      rcards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+          const flipped = card.classList.toggle('flip');
+          card.setAttribute('aria-pressed', String(flipped));
+
+          if (flipped && !readCards.has(i)) {
+            readCards.add(i);
+            // Every card read? A small shower for finishing the feature.
+            if (readCards.size === rcards.length && !allReadCelebrated) {
+              allReadCelebrated = true;
+              setTimeout(() => window.sprinkle(40), 450);
+            }
+          }
+        });
+      });
+
+      /* ========================================================
+         THE LETTER — typewriter + toggle
+         ======================================================== */
+      const letterBtn = document.getElementById('openLetterBtn');
+      const letterBox = document.getElementById('letterBox');
+      const letterText = document.getElementById('letterText');
+      const letterSignature = document.getElementById('letterSignature');
+      const letterContent = `Dear Disha,
 
 Happy Birthday.
 
-I hope this new year of your life brings you softer days, brave beginnings, unexpected joy, and so many reasons to be proud of yourself.
+I am not always the best at saying things out loud. You probably know that. But I want you to know — I feel everything. Every bit of the love, the gratitude, and the quiet happiness that comes from simply having you in my life.
 
-Thank you for being you — for the little moments, the laughs, the conversations, and the memories that mean more to me than I always know how to say.
+Since you came in, everything has been better. You changed me in ways I am still figuring out. You care and love in a way that most people do not even know how to. And I see it — even when I do not always say it.
 
-I hope you feel celebrated today, and on all the ordinary days that come after it, too.
+I am learning. I want to be the person who makes you happy. Who makes sure you have everything — all the good food, all the best cafes, all the things that make your eyes light up. You deserve every single bit of it.
 
-Keep growing into the person you dream of being. I will be right here, cheering for you every step of the way.
+So today, on your birthday — I just want you to know this:
+You are the most important person in my world.
+And I am so, so glad you exist.
 
 With all my love,`;
 
-    let twTimer = null;
-    document.getElementById('openLetter').addEventListener('click', function () {
-      const box = document.getElementById('twbox');
-      const open = box.style.display === 'block';
-      if (open) {
-        box.style.display = 'none'; this.textContent = 'Open your letter ✉';
-        clearTimeout(twTimer); document.getElementById('twtext').textContent = ''; return;
-      }
-      box.style.display = 'block'; this.textContent = 'Close your letter ♡';
-      sprinkle(35);
-      const el = document.getElementById('twtext'), cur = document.getElementById('twc');
-      el.textContent = ''; cur.style.display = 'inline-block';
-      let i = 0;
-      function type() {
-        if (i < letter.length) {
-          el.textContent += letter[i++];
-          twTimer = setTimeout(type, letter[i - 1] === '\n' ? 110 : Math.random() * 32 + 22);
-        } else { cur.style.display = 'none'; }
-      }
-      type();
-      setTimeout(() => box.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
-    });
+      let letterIsOpen = false;
+      let letterTyped = false;
+      let typeTimeout = null;
 
-    // CONFETTI
-    function sprinkle(n) {
-      const syms = ['♡', '♥', '✦', '✧', '★', '·'], cols = ['#7d2937', '#d99aa4', '#b99454', '#879275', '#f3dce0', '#9e3a4a'];
-      for (let i = 0; i < n; i++) {
-        const el = document.createElement('span'); el.className = 'cp';
-        el.textContent = syms[Math.floor(Math.random() * syms.length)];
-        el.style.cssText = `left:${Math.random() * 100}vw;font-size:${Math.random() * 14 + 10}px;color:${cols[Math.floor(Math.random() * cols.length)]};--d:${2 + Math.random() * 2.5}s;--dr:${Math.random() * 160 - 80}px;animation-delay:${Math.random() * .4}s;`;
-        document.body.appendChild(el);
-        setTimeout(() => el.remove(), 5500);
+      function typeWriter(text, i = 0) {
+        if (!letterIsOpen) return;
+        if (i < text.length) {
+          letterText.textContent += text.charAt(i);
+          const char = text.charAt(i);
+          const delay = char === '\n' ? 120 : (Math.random() * (45 - 20) + 20);
+          typeTimeout = setTimeout(() => typeWriter(text, i + 1), delay);
+        } else {
+          letterTyped = true;
+          letterSignature.classList.add('vis');
+        }
       }
-    }
 
-    // DAYS COUNTER – update this date to your anniversary/first-met date
-    const START = new Date('2024-01-01'); // <-- change this
-    const days = Math.floor((new Date() - START) / 864e5);
-    document.getElementById('daysNum').textContent = days > 0 ? days : '∞';
+      if (letterBtn && letterBox) {
+        letterBtn.addEventListener('click', () => {
+          letterIsOpen = !letterIsOpen;
+          letterBtn.setAttribute('aria-expanded', String(letterIsOpen));
+          if (letterIsOpen) {
+            window.sprinkle(40);
+            letterBox.style.display = 'block';
+            letterBtn.textContent = 'CLOSE YOUR LETTER ♡';
+            if (!letterTyped) {
+              letterText.textContent = '';
+              letterSignature.classList.remove('vis');
+              if (prefersReducedMotion) {
+                letterText.textContent = letterContent;
+                letterTyped = true;
+                letterSignature.classList.add('vis');
+              } else {
+                typeWriter(letterContent, 0);
+              }
+            }
+          } else {
+            clearTimeout(typeTimeout);
+            letterBox.style.display = 'none';
+            letterBtn.textContent = 'OPEN YOUR LETTER ✉';
+          }
+        });
+      }
+
+      /* ========================================================
+         STARS CANVAS — 100 twinkling gold dots
+         ======================================================== */
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      const STAR_COUNT = 100;
+      let stars = [];
+      let w = 0, h = 0, dpr = 1;
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function createStars() {
+        stars = Array.from({ length: STAR_COUNT }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: rand(0.5, 2),
+          base: rand(0.15, 0.6),        // resting opacity
+          amp: rand(0.15, 0.4),         // twinkle amplitude
+          speed: rand(0.0004, 0.0016),  // twinkle speed (rad / ms)
+          phase: rand(0, Math.PI * 2)
+        }));
+      }
+
+      function draw(t) {
+        ctx.clearRect(0, 0, w, h);
+        for (const s of stars) {
+          const o = prefersReducedMotion
+            ? s.base
+            : Math.max(0.05, Math.min(1, s.base + Math.sin(t * s.speed + s.phase) * s.amp));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201,168,76,${o.toFixed(3)})`;
+          ctx.fill();
+        }
+      }
+
+      let rafId = null;
+      function loop(t) {
+        draw(t);
+        rafId = requestAnimationFrame(loop);
+      }
+
+      function start() {
+        if (prefersReducedMotion) { draw(0); return; }
+        if (rafId === null) rafId = requestAnimationFrame(loop);
+      }
+
+      function stop() {
+        if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+      }
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          resize();
+          createStars();
+          if (prefersReducedMotion) draw(0);
+        }, 150);
+      });
+
+      // Pause when tab is hidden to save battery
+      document.addEventListener('visibilitychange', () => {
+        document.hidden ? stop() : start();
+      });
+
+      resize();
+      createStars();
+      start();
+
+      /* ========================================================
+         MORE OF US STRIP — drag to scroll
+         ======================================================== */
+      const strip = document.querySelector('.more-strip');
+      if (strip) {
+        let isDown = false, startX, scrollLeft;
+
+        strip.addEventListener('mousedown', (e) => {
+          isDown = true;
+          strip.classList.add('active');
+          startX = e.pageX - strip.offsetLeft;
+          scrollLeft = strip.scrollLeft;
+        });
+
+        strip.addEventListener('mouseleave', () => {
+          isDown = false;
+        });
+
+        strip.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+
+        strip.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - strip.offsetLeft;
+          const walk = (x - startX) * 1.5;
+          strip.scrollLeft = scrollLeft - walk;
+        });
+
+        strip.querySelectorAll('img').forEach(img => {
+          img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+      }
+    })();
   </script>
 </body>
 
